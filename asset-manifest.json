@@ -1,0 +1,21 @@
+{
+  "files": {
+    "main.css": "/faculty-dashboard/static/css/main.ac544417.chunk.css",
+    "main.js": "/faculty-dashboard/static/js/main.91d53acd.chunk.js",
+    "main.js.map": "/faculty-dashboard/static/js/main.91d53acd.chunk.js.map",
+    "runtime-main.js": "/faculty-dashboard/static/js/runtime-main.3f64ebb8.js",
+    "runtime-main.js.map": "/faculty-dashboard/static/js/runtime-main.3f64ebb8.js.map",
+    "static/js/2.ad4e31db.chunk.js": "/faculty-dashboard/static/js/2.ad4e31db.chunk.js",
+    "static/js/2.ad4e31db.chunk.js.map": "/faculty-dashboard/static/js/2.ad4e31db.chunk.js.map",
+    "index.html": "/faculty-dashboard/index.html",
+    "precache-manifest.4717979b8ab05c6110767c5486e93db9.js": "/faculty-dashboard/precache-manifest.4717979b8ab05c6110767c5486e93db9.js",
+    "service-worker.js": "/faculty-dashboard/service-worker.js",
+    "static/css/main.ac544417.chunk.css.map": "/faculty-dashboard/static/css/main.ac544417.chunk.css.map"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.3f64ebb8.js",
+    "static/js/2.ad4e31db.chunk.js",
+    "static/css/main.ac544417.chunk.css",
+    "static/js/main.91d53acd.chunk.js"
+  ]
+}
