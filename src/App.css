@@ -1,22 +1,55 @@
-.App {
+.Container{
+  padding: 5%;
+}
+
+.Box{
   text-align: center;
+  padding: 5%;
+  margin: 0px 450px 0px 450px;
+  border-radius: 5px;
+  border-style: solid;
+  border-width: 2px;
 }
 
-.App-logo {
-  height: 40vmin;
+.Content{
+  display: inline-block;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+.FormGroup{
+  display: block;
+}
+
+.Heads{
+  color: black;
+  font-size: 80px;
+  margin: 0px 0px 60px 0px;
+}
+
+.Subheads{
+  display: block;
+  font-size: 20px;
+}
+
+.InputBoxes{
+  width: 300px;
+  padding: 10px;
+  margin-top: 0px;
+  margin: 20px;
+  border-radius: 5px;
+  border-style: solid;
+  border-width: 2px;
+}
+
+input[type=submit]{
   color: white;
+  background-color: black;
+  margin: 20px;
 }
 
-.App-link {
-  color: #09d3ac;
+.Select:hover{
+  cursor: pointer;
+}
+
+.Butn{
+  width: 100px;
 }
