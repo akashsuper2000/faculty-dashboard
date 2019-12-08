@@ -74,8 +74,28 @@ input[type=submit]{
 
 .ReactPasswordStrength-strength-bar{
   margin: 1px 25px 10px 45px;
-  width: calc(100%);
   max-width: 293px;
+  padding: 3px;
+}
+
+.ReactPasswordStrength.is-strength-0 .ReactPasswordStrength-strength-bar{
+  width: calc(0% + 2px);
+}
+
+.ReactPasswordStrength.is-strength-1 .ReactPasswordStrength-strength-bar{
+  width: calc(20% + 2px);
+}
+
+.ReactPasswordStrength.is-strength-2 .ReactPasswordStrength-strength-bar{
+  width: calc(40% + 2px);
+}
+
+.ReactPasswordStrength.is-strength-3 .ReactPasswordStrength-strength-bar{
+  width: calc(60% + 2px);
+}
+
+.ReactPasswordStrength.is-strength-4 .ReactPasswordStrength-strength-bar{
+  width: calc(80% + 2px);
 }
 
 .ReactPasswordStrength-strength-desc{
