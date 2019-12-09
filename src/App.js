@@ -16,10 +16,10 @@ class App extends React.Component{
   handleLogin = (e) => {
     e.preventDefault();
     var data = {user: document.getElementsByName('username')[0].value,
-    cost: document.getElementsByName('password')[0].value};
+    pass: document.getElementsByName('password')[0].value};
 
     console.log(JSON.stringify(data));
-    fetch("https://us-central1-nodejs-workshop-210811.cloudfunctions.net/mysql-function-2/bill", {
+    fetch("http://localhost:5000/login", {
         method: 'POST',
         headers: {'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*'},
         body: JSON.stringify(data)
@@ -43,10 +43,35 @@ class App extends React.Component{
     e.preventDefault();
     var data = {user: document.getElementsByName('username')[0].value,
     email: document.getElementsByName('email')[0].value,
-    cost: document.getElementsByName('password')[0].value};
+    pass: document.getElementsByName('password')[0].value};
     
     console.log(JSON.stringify(data));
-    fetch("https://us-central1-nodejs-workshop-210811.cloudfunctions.net/mysql-function-2/bill", {
+    fetch("http://localhost:5000/register", {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*'},
+        body: JSON.stringify(data)
+    }).then(function(response) {
+        if (response.status >= 400) {
+          throw new Error("Bad response from server");
+        }
+        return response.json();
+    }).then(function(data) {
+        console.log(data);  
+        // eslint-disable-next-line
+        if(data == "success"){
+        console.log('Success'); 
+        }
+    }).catch(function(err) {
+        console.log(err);
+    });
+  }
+
+  handleFP = (e) => {
+    e.preventDefault();
+    var data = {send: "yes"};
+    
+    console.log(JSON.stringify(data));
+    fetch("http://localhost:5000/fp", {
         method: 'POST',
         headers: {'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*'},
         body: JSON.stringify(data)
@@ -165,16 +190,15 @@ class App extends React.Component{
 
         <div className='Container'>
         <div className='Box'>
-          <h1 className='Heads' style={{fontSize: 50}}>Forgot Password</h1>
+          <h1 className='Heads'>Forgot Password</h1>
           <div className='Content'>
           <form onSubmit={this.handleFP}>
 
           <div className='FormGroup'>
-          <span className='Subheads' name='otp-thing'>Enter the OTP received in your mail ID</span>
-          <input className='InputBoxes' style={{margin: 50}} name='otp' placeholder='OTP' type='number' required></input>
+          <span className='Subheads' name='otp-thing'>Send the password to the registered &emsp; Email ID?</span>
           </div>
 
-          <input className='btn-lg btn btn-default' type='submit' value='Submit'/><br/>
+          <input className='btn-lg btn btn-default' type='submit' value='Send'/><br/>
           <div className='FormGroup'>
           <input className='btn-md btn btn-default Smbtn' value='Login' onClick={this.handleChange}/>
           <input className='btn-md btn btn-default Smbtn' value='Register' onClick={this.handleChange}/>
