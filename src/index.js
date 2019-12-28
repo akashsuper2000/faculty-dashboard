@@ -2,11 +2,30 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
+import Main from './Main';
 import * as serviceWorker from './serviceWorker';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+class Index extends React.Component{
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
+  constructor(props){
+    super(props);
+    this.state = {
+      login: 0,
+      page: 0
+    }
+  };
+
+  render(){
+  	if(this.state.login==0){
+  		return(<App />);
+  	}
+
+  	else{
+  		return(<Main />);
+  	}
+  }
+}
+
+ReactDOM.render(<Index />, document.getElementById('root'));
+
 serviceWorker.unregister();
