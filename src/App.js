@@ -117,7 +117,7 @@ class App extends React.Component{
           <form onSubmit={this.handleLogin}>
 
           <div className='FormGroup'>
-          <input className='InputBoxes' name='username' placeholder='Name' required></input>
+          <input className='InputBoxes' name='username' placeholder='Username' required></input>
           <span className='Subheads' name='userinv' style={{visibility: 'collapse'}}>Enter a username!</span>
           </div>
 
@@ -150,7 +150,7 @@ class App extends React.Component{
           <form onSubmit={this.handleRegister}>
 
           <div className='FormGroup'>
-          <input className='InputBoxes' name='username' placeholder='Name' required></input>
+          <input className='InputBoxes' name='username' placeholder='Username' required></input>
           <span className='Subheads' name='userinv' style={{visibility: 'collapse'}}>Enter a username!</span>
           </div>
 

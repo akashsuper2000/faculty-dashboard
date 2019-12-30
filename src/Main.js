@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import ReactPasswordStrength from 'react-password-strength';
 import './bootstrap.css';
 import './App.css';
 
@@ -38,7 +39,7 @@ class Main extends React.Component{
           <form onSubmit={this.handleLogin}>
 
           <div className='FormGroup'>
-          <input className='InputBoxes' name='username' placeholder='Name' required></input>
+          <input className='InputBoxes' name='username' placeholder='Userame' required></input>
           <span className='Subheads' name='userinv' style={{visibility: 'collapse'}}>Enter a username!</span>
           </div>
 
@@ -71,7 +72,7 @@ class Main extends React.Component{
           <form onSubmit={this.handleRegister}>
 
           <div className='FormGroup'>
-          <input className='InputBoxes' name='username' placeholder='Name' required></input>
+          <input className='InputBoxes' name='username' placeholder='Username' required></input>
           <span className='Subheads' name='userinv' style={{visibility: 'collapse'}}>Enter a username!</span>
           </div>
 
