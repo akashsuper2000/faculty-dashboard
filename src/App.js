@@ -68,7 +68,7 @@ class App extends React.Component{
 
   handleFP = (e) => {
     e.preventDefault();
-    var data = {send: "yes"};
+    var data = {user: document.getElementsByName('username')[0].value};
     
     console.log(JSON.stringify(data));
     fetch("http://localhost:5000/fp", {
@@ -197,7 +197,7 @@ class App extends React.Component{
           <div className='FormGroup'>
           <span className='Subheads' name='otp-thing'>Send the password to the registered &emsp; Email ID?</span>
           </div>
-
+          <input className='InputBoxes' name='username' placeholder='Username' required></input>
           <input className='btn-lg btn btn-default' type='submit' value='Send'/><br/>
           <div className='FormGroup'>
           <input className='btn-md btn btn-default Smbtn' value='Login' onClick={this.handleChange}/>
