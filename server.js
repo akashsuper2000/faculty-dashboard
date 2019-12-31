@@ -38,7 +38,7 @@ app.post('/login',(req,res)=>{
   var {user, pass} = req.body;
   console.log(user);
   console.log(pass);
-  con.query("select * from users where username = "+user+" password = "+pass+";", function (err, result, fields) {
+  con.query("select * from users where username = '"+user+"' and password = '"+pass+"';", function (err, result, fields) {
     if (err) console.log(err.sqlMessage);
     const abc={
       res:result,
@@ -53,7 +53,7 @@ app.post('/register',(req,res)=>{
   console.log(user);
   console.log(email);
   console.log(pass);
-  con.query("insert into users values ("+user+","+pass+","+email+");", function (err, result, fields) {
+  con.query("insert into users values ('"+user+"','"+pass+"','"+email+"');", function (err, result, fields) {
     if (err) console.log(err.sqlMessage);
     const abc={
       res:result,
@@ -67,20 +67,17 @@ app.post('/fp',(req,res)=>{
   var {user} = req.body;
   console.log(user);
 
-  con.query("select password from users where username = "+user+";", function (err, result, fields) {
+  con.query("select password,email from users where username = '"+user+"';", function (err, result, fields) {
     if (err) console.log(err.sqlMessage);
-    const abc={
-      res:result,
-      error:err
-    }
-    res.json(JSON.stringify(abc));
-  });
+    console.log(result);
+    var results = result[0].password;
+    var mailid = result[0].email;
 
-  var mailOptions = {
+    var mailOptions = {
     from: 'sefacultydashboard@gmail.com',
-    to: 'akashsuper2000@gmail.com',
+    to: mailid,
     subject: 'Password Reset',
-    html: 'Your password is : <b>' + 'The actual password!' + ' </b>'
+    html: 'Your password is : <b>' + results + ' </b>'
   };
 
   transporter.sendMail(mailOptions, function(error, info){
@@ -90,6 +87,16 @@ app.post('/fp',(req,res)=>{
       console.log('Email sent: ' + info.response);
     }
   });
+
+    const abc={
+      res:result,
+      error:err
+    }
+    
+    res.json(JSON.stringify(abc));
+  });
+
+  
 
 });
 

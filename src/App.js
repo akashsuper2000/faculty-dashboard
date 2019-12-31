@@ -10,6 +10,7 @@ class App extends React.Component{
     super(props);
     this.state = {
       page: 0,
+      login: 0,
     }
   };
 
@@ -29,10 +30,13 @@ class App extends React.Component{
         }
         return response.json();
     }).then(function(data) {
-        console.log(data);  
-        // eslint-disable-next-line
-        if(data == "success"){
+        console.log(data);
+        data = JSON.parse(data); 
+        if(data.res.length == 1){
         console.log('Success'); 
+        }
+        else{
+          console.log('Failure');
         }
     }).catch(function(err) {
         console.log(err);
@@ -56,10 +60,13 @@ class App extends React.Component{
         }
         return response.json();
     }).then(function(data) {
-        console.log(data);  
-        // eslint-disable-next-line
-        if(data == "success"){
+        console.log(data);
+        data = JSON.parse(data);  
+        if(data.res.affectedRows == 1){
         console.log('Success'); 
+        }
+        else{
+          console.log('Failure');
         }
     }).catch(function(err) {
         console.log(err);
@@ -82,7 +89,6 @@ class App extends React.Component{
         return response.json();
     }).then(function(data) {
         console.log(data);  
-        // eslint-disable-next-line
         if(data == "success"){
         console.log('Success'); 
         }
@@ -106,6 +112,8 @@ class App extends React.Component{
   }
 
   render(){
+
+    if(this.state.login==0){
 
     if(this.state.page==0){
       return(
@@ -211,6 +219,15 @@ class App extends React.Component{
 
       );
     }
+  }
+
+  else{
+
+    return(<div>
+      </div>);
+
+  }
+
   }
 }
 
