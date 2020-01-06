@@ -203,7 +203,7 @@ class App extends React.Component{
           <form onSubmit={this.handleFP}>
 
           <div className='FormGroup'>
-          <span className='Subheads' name='otp-thing'>Send the password to the registered &emsp; Email ID?</span>
+          <span className='Subheads' name='otp-thing'>Send the password to the registered Email ID?</span>
           </div>
           <input className='InputBoxes' name='username' placeholder='Username' required></input>
           <input className='btn-lg btn btn-default' type='submit' value='Send'/><br/>
