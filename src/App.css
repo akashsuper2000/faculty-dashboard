@@ -47,7 +47,7 @@ input[type=submit]{
   margin-bottom: 40px;
 }
 
-.Select:hover, .Smbtn:hover{
+.Select:hover, .Smbtn:hover, .Userbut:hover{
   cursor: pointer;
 }
 
@@ -97,4 +97,21 @@ input[type=submit]{
 
 .ReactPasswordStrength-strength-desc{
   font-size: 0px;
+}
+
+.Topbar{
+  height: 5%;
+}
+
+.User-logo{
+  width: 30px;
+  margin-left: 20px;
+}
+
+.Navbar{
+  height: 5%;
+}
+
+.Userbut{
+
 }

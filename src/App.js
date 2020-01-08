@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import ReactPasswordStrength from 'react-password-strength';
 import './bootstrap.css';
 import './App.css';
+import user from './user.svg';
 
 class App extends React.Component{
 
@@ -10,7 +11,8 @@ class App extends React.Component{
     super(props);
     this.state = {
       page: 0,
-      login: 0,
+      login: 1,
+      user: 'User'
     }
   };
 
@@ -33,7 +35,9 @@ class App extends React.Component{
         console.log(data);
         data = JSON.parse(data); 
         if(data.res.length == 1){
-        console.log('Success'); 
+        console.log('Success');
+        this.setState({user: document.getElementsByName('username')[0].value});
+        this.setState({login: 1});
         }
         else{
           console.log('Failure');
@@ -223,8 +227,25 @@ class App extends React.Component{
 
   else{
 
-    return(<div>
-      </div>);
+    return(
+
+      <div className='Container'>
+
+      <div className='Topbar'>
+        <div className='Navbar row'>
+        <div className='col-lg-2'>Profile</div>
+        <div className='col-lg-2'>Profile</div>
+        <div className='col-lg-2'>Profile</div>
+        <div className='col-lg-2'>Profile</div>
+        <div className='col-lg-2'>Profile</div>
+        <div className='col-lg-2 Userbut'> {this.state.user} <img src={user} className='User-logo' alt='User' /></div>
+        </div>
+        <hr/>
+      </div>
+
+      </div>
+
+      );
 
   }
 
