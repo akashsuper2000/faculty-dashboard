@@ -11,7 +11,7 @@ class App extends React.Component{
     super(props);
     this.state = {
       page: 0,
-      login: 1,
+      login: 0,
       user: 'User'
     }
   };
@@ -104,14 +104,38 @@ class App extends React.Component{
   handleChange = (e) => {
     e.preventDefault();
     console.log(e.target);
-    if(e.target.value=='Register'){
-      this.setState({page: 1});
-    }
-    else if(e.target.value=='Forgot Password?'){
-      this.setState({page: 2});
+    if(this.state.login==0){
+      if(e.target.value=='Register'){
+        this.setState({page: 1});
+      }
+      else if(e.target.value=='Forgot Password?'){
+        this.setState({page: 2});
+      }
+      else{
+        this.setState({page: 0});
+      }
     }
     else{
-      this.setState({page: 0});
+      var value = e.target.innerHTML.split(' ')[0]
+      if(value=='My'){
+        this.setState({page: 0});
+      }
+      else if(value=='Course'){
+        this.setState({page:1});
+      }
+      else if(value=='Time'){
+        this.setState({page: 2});
+      }
+      else if(value=='Announcements'){
+        this.setState({page: 3});
+      }
+      else if(value=='Leave'){
+        this.setState({page: 0});
+      }
+      else{
+        this.setState({page: 0});
+        this.setState({login: 0});
+      }
     }
   }
 
@@ -229,16 +253,16 @@ class App extends React.Component{
 
     return(
 
-      <div className='Container'>
+      <div className='Container2'>
 
       <div className='Topbar'>
-        <div className='Navbar row'>
-        <div className='col-lg-2'>Profile</div>
-        <div className='col-lg-2'>Profile</div>
-        <div className='col-lg-2'>Profile</div>
-        <div className='col-lg-2'>Profile</div>
-        <div className='col-lg-2'>Profile</div>
-        <div className='col-lg-2 Userbut'> {this.state.user} <img src={user} className='User-logo' alt='User' /></div>
+        <div className='row'>
+        <div className='col-lg-2' onClick={this.handleChange}>My Profile</div>
+        <div className='col-lg-2' onClick={this.handleChange}>Course Handled</div>
+        <div className='col-lg-2' onClick={this.handleChange}>Time Table</div>
+        <div className='col-lg-2' onClick={this.handleChange}>Announcements</div>
+        <div className='col-lg-2' onClick={this.handleChange}>Leave Management</div>
+        <div className='col-lg-2 Userbut' onClick={this.handleChange}> Logout <img src={user} className='User-logo' alt='User' /></div>
         </div>
         <hr/>
       </div>

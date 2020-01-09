@@ -47,7 +47,7 @@ input[type=submit]{
   margin-bottom: 40px;
 }
 
-.Select:hover, .Smbtn:hover, .Userbut:hover{
+.Select:hover, .Smbtn:hover, .Topbar:hover{
   cursor: pointer;
 }
 
@@ -99,19 +99,16 @@ input[type=submit]{
   font-size: 0px;
 }
 
+.Container2{
+  padding: 1%;
+}
+
 .Topbar{
   height: 5%;
+  margin-left: 5%;
 }
 
 .User-logo{
   width: 30px;
   margin-left: 20px;
-}
-
-.Navbar{
-  height: 5%;
-}
-
-.Userbut{
-
 }
