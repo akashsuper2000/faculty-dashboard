@@ -14,10 +14,11 @@ class App extends React.Component{
       login: 0,
       user: 'User'
     }
-  };
+  }
 
   handleLogin = (e) => {
     e.preventDefault();
+    let self = this;
     var data = {user: document.getElementsByName('username')[0].value,
     pass: document.getElementsByName('password')[0].value};
 
@@ -36,8 +37,8 @@ class App extends React.Component{
         data = JSON.parse(data); 
         if(data.res.length == 1){
         console.log('Success');
-        this.setState({user: document.getElementsByName('username')[0].value});
-        this.setState({login: 1});
+        self.setState({user: document.getElementsByName('username')[0].value});
+        self.setState({login: 1});
         }
         else{
           console.log('Failure');
