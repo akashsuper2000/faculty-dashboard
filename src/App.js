@@ -7,6 +7,10 @@ import user from './user.svg';
 
 class App extends React.Component{
 
+  componentDidMount(){
+    document.title = 'Faculty Dashboard';
+  }
+
   constructor(props){
     super(props);
     this.state = {
