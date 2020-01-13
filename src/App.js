@@ -258,12 +258,12 @@ class App extends React.Component{
 
       <div className='Topbar'>
         <div className='row'>
-        <div className='col-lg-2' onClick={this.handleChange}>My Profile</div>
-        <div className='col-lg-2' onClick={this.handleChange}>Course Handled</div>
-        <div className='col-lg-2' onClick={this.handleChange}>Time Table</div>
-        <div className='col-lg-2' onClick={this.handleChange}>Announcements</div>
-        <div className='col-lg-2' onClick={this.handleChange}>Leave Management</div>
-        <div className='col-lg-2 Userbut' onClick={this.handleChange}> Logout <img src={user} className='User-logo' alt='User' /></div>
+        <div className='col-lg-2 Navbut' onClick={this.handleChange}>My Profile</div>
+        <div className='col-lg-2 Navbut' onClick={this.handleChange}>Course Handled</div>
+        <div className='col-lg-2 Navbut' onClick={this.handleChange}>Time Table</div>
+        <div className='col-lg-2 Navbut' onClick={this.handleChange}>Announcements</div>
+        <div className='col-lg-2 Navbut' onClick={this.handleChange}>Leave Management</div>
+        <div className='col-lg-2 Navbut' onClick={this.handleChange}> Logout <img src={user} className='User-logo' alt='User' /></div>
         </div>
         <hr/>
       </div>
