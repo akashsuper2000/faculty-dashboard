@@ -5,6 +5,8 @@ import './bootstrap.css';
 import './App.css';
 import user from './user.svg';
 
+import LMS from './Components/lms.js';
+
 class App extends React.Component{
 
   componentDidMount(){
@@ -15,7 +17,7 @@ class App extends React.Component{
     super(props);
     this.state = {
       page: 0,
-      login: 0,
+      login: 1,
       user: 'User'
     }
   }
@@ -260,8 +262,8 @@ class App extends React.Component{
 
       <div className='Container2'>
 
-      <div className='Topbar'>
-        <div className='row'>
+      <div>
+        <div className='row Topbar'>
         <div className='col-lg-2 Navbut' onClick={this.handleChange}>My Profile</div>
         <div className='col-lg-2 Navbut' onClick={this.handleChange}>Course Handled</div>
         <div className='col-lg-2 Navbut' onClick={this.handleChange}>Time Table</div>
@@ -270,6 +272,7 @@ class App extends React.Component{
         <div className='col-lg-2 Navbut' onClick={this.handleChange}> Logout <img src={user} className='User-logo' alt='User' /></div>
         </div>
         <hr/>
+        <LMS />
       </div>
 
       </div>
