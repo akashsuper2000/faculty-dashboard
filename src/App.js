@@ -29,7 +29,7 @@ class App extends React.Component{
     pass: document.getElementsByName('password')[0].value};
 
     console.log(JSON.stringify(data));
-    fetch("http://localhost:5000/login", {
+    fetch("https://server-for-faculty-dashboard.herokuapp.com:5000/login", {
         method: 'POST',
         headers: {'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*'},
         body: JSON.stringify(data)
@@ -61,7 +61,7 @@ class App extends React.Component{
     pass: document.getElementsByName('password')[0].value};
     
     console.log(JSON.stringify(data));
-    fetch("http://localhost:5000/register", {
+    fetch("https://server-for-faculty-dashboard.herokuapp.com:5000/register", {
         method: 'POST',
         headers: {'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*'},
         body: JSON.stringify(data)
@@ -89,7 +89,7 @@ class App extends React.Component{
     var data = {user: document.getElementsByName('username')[0].value};
     
     console.log(JSON.stringify(data));
-    fetch("http://localhost:5000/fp", {
+    fetch("https://server-for-faculty-dashboard.herokuapp.com:5000/fp", {
         method: 'POST',
         headers: {'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*'},
         body: JSON.stringify(data)
