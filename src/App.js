@@ -17,7 +17,7 @@ class App extends React.Component{
     super(props);
     this.state = {
       page: 0,
-      login: 1,
+      login: 0,
       user: 'User'
     }
   }
