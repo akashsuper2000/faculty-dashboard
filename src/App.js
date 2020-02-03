@@ -87,6 +87,7 @@ class App extends React.Component{
         }
         else if(data.res.affectedRows == 1){
           console.log('Success');
+          alert('Account successfully created!');
         }
         else{
           console.log('Failure');
