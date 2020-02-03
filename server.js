@@ -20,7 +20,7 @@ var con = mysql.createConnection({
 });
 
 con.connect((err) => {
-  if(!err)  
+  if(!err)
   console.log('Connection succeeded');
   else
   console.log('Unsuccessful \n Error : '+JSON.stringify(err,undefined,2));
@@ -53,14 +53,31 @@ app.post('/register',(req,res)=>{
   console.log(user);
   console.log(email);
   console.log(pass);
-  con.query("insert into users values ('"+user+"','"+pass+"','"+email+"');", function (err, result, fields) {
-    if (err) console.log(err.sqlMessage);
-    const abc={
-      res:result,
-      error:err
+  con.query("select * from users where username = '"+user+"';", function (err, result, fields) {
+    if(err) console.log(err.sqlMessage);
+    if(result.length>0){
+      const abc={
+        res:result,
+        error: err
+      }
+      res.json(JSON.stringify(abc));
+      console.log(JSON.stringify(abc));
     }
-    res.json(JSON.stringify(abc));
+    else{
+
+      con.query("insert into users values ('"+user+"','"+pass+"','"+email+"');", function (err, result, fields) {
+        if (err) console.log(err.sqlMessage);
+        const abc={
+          res:result,
+          error:err
+        }
+        res.json(JSON.stringify(abc));
+        console.log(JSON.stringify(abc));
+      });
+
+    }
   });
+
 });
 
 app.post('/fp',(req,res)=>{
@@ -68,37 +85,43 @@ app.post('/fp',(req,res)=>{
   console.log(user);
 
   con.query("select password,email from users where username = '"+user+"';", function (err, result, fields) {
-    if (err) console.log(err.sqlMessage);
     console.log(result);
-    var results = result[0].password;
-    var mailid = result[0].email;
-
-    var mailOptions = {
-    from: 'sefacultydashboard@gmail.com',
-    to: mailid,
-    subject: 'Password Reset',
-    html: 'Your password is : <b>' + results + ' </b>'
-  };
-
-  transporter.sendMail(mailOptions, function(error, info){
-    if (error) {
-      console.log(error);
-    } else {
-      console.log('Email sent: ' + info.response);
+    if (err) console.log(err.sqlMessage);
+    else if(result.length == 0){
+      console.log('Account does not exist!');
+      res.json(JSON.stringify({res: 0}));
     }
-  });
+    else{
+      var results = result[0].password;
+      var mailid = result[0].email;
 
-    const abc={
-      res:result,
-      error:err
+      var mailOptions = {
+      from: 'sefacultydashboard@gmail.com',
+      to: mailid,
+      subject: 'Password Reset',
+      html: 'Your password is : <b>' + results + ' </b>'
+    };
+
+    transporter.sendMail(mailOptions, function(error, info){
+      if (error) {
+        console.log(error);
+      } else {
+        console.log('Email sent: ' + info.response);
+      }
+    });
+
+      const abc={
+        res:result,
+        error:err
+      }
+      
+      res.json(JSON.stringify({res: 1}));
     }
-    
-    res.json(JSON.stringify(abc));
-  });
-
-  
-
+    });
 });
+
+
+
 
 app.listen(process.env.PORT || 5000,()=>{
   console.log("Port 5000");

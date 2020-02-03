@@ -19,7 +19,8 @@ class App extends React.Component{
     this.state = {
       page: 0,
       login: 0,
-      user: 'User'
+      user: 'User',
+      sendurl: 'https://server-for-faculty-dashboard.herokuapp.com/'
     }
   }
 
@@ -30,7 +31,7 @@ class App extends React.Component{
     pass: document.getElementsByName('password')[0].value};
 
     console.log(JSON.stringify(data));
-    fetch("https://server-for-faculty-dashboard.herokuapp.com/login", {
+    fetch(self.state.sendurl+"login", {
         method: 'POST',
         headers: {'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*'},
         body: JSON.stringify(data)
@@ -47,8 +48,13 @@ class App extends React.Component{
         self.setState({user: document.getElementsByName('username')[0].value});
         self.setState({login: 1});
         }
+        else if(data.res.length == 0){
+          console.log('Account does not exist!');
+          alert('Account does not exist!');
+        }
         else{
           console.log('Failure');
+          alert('Something went wrong, Try again later!');
         }
     }).catch(function(err) {
         console.log(err);
@@ -57,12 +63,13 @@ class App extends React.Component{
 
   handleRegister = (e) => {
     e.preventDefault();
+    let self = this;
     var data = {user: document.getElementsByName('username')[0].value,
     email: document.getElementsByName('email')[0].value,
     pass: document.getElementsByName('password')[0].value};
     
     console.log(JSON.stringify(data));
-    fetch("https://server-for-faculty-dashboard.herokuapp.com/register", {
+    fetch(self.state.sendurl+"register", {
         method: 'POST',
         headers: {'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*'},
         body: JSON.stringify(data)
@@ -74,11 +81,16 @@ class App extends React.Component{
     }).then(function(data) {
         console.log(data);
         data = JSON.parse(data);  
-        if(data.res.affectedRows == 1){
-        console.log('Success'); 
+        if(data.res.length == 1){
+        console.log('Account already exists!');
+        alert('Account already exists!');
+        }
+        else if(data.res.affectedRows == 1){
+          console.log('Success');
         }
         else{
           console.log('Failure');
+          alert('Something went wrong, Try again later!');
         }
     }).catch(function(err) {
         console.log(err);
@@ -87,10 +99,11 @@ class App extends React.Component{
 
   handleFP = (e) => {
     e.preventDefault();
+    let self = this;
     var data = {user: document.getElementsByName('username')[0].value};
     
     console.log(JSON.stringify(data));
-    fetch("https://server-for-faculty-dashboard.herokuapp.com/fp", {
+    fetch(self.state.sendurl+"fp", {
         method: 'POST',
         headers: {'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*'},
         body: JSON.stringify(data)
@@ -100,9 +113,14 @@ class App extends React.Component{
         }
         return response.json();
     }).then(function(data) {
-        console.log(data);  
-        if(data == "success"){
-        console.log('Success'); 
+        console.log(data);
+        data = JSON.parse(data);
+        if(data.res == 1){
+        console.log('Success');
+        alert('Password sent to your Email ID!');
+        }
+        else if(data.res == 0){
+          alert('Account does not exist!');
         }
     }).catch(function(err) {
         console.log(err);
