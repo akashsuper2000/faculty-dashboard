@@ -3,7 +3,8 @@ import ReactDOM from 'react-dom';
 import ReactPasswordStrength from 'react-password-strength';
 import './bootstrap.css';
 import './App.css';
-import user from './user.svg';
+import user from './Components/user.svg';
+import UC from './Components/uc.js';
 
 import LMS from './Components/lms.js';
 
@@ -17,7 +18,7 @@ class App extends React.Component{
     super(props);
     this.state = {
       page: 0,
-      login: 0,
+      login: 1,
       user: 'User'
     }
   }
@@ -29,7 +30,7 @@ class App extends React.Component{
     pass: document.getElementsByName('password')[0].value};
 
     console.log(JSON.stringify(data));
-    fetch("https://server-for-faculty-dashboard.herokuapp.com:5000/login", {
+    fetch("https://server-for-faculty-dashboard.herokuapp.com/login", {
         method: 'POST',
         headers: {'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*'},
         body: JSON.stringify(data)
@@ -61,7 +62,7 @@ class App extends React.Component{
     pass: document.getElementsByName('password')[0].value};
     
     console.log(JSON.stringify(data));
-    fetch("https://server-for-faculty-dashboard.herokuapp.com:5000/register", {
+    fetch("https://server-for-faculty-dashboard.herokuapp.com/register", {
         method: 'POST',
         headers: {'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*'},
         body: JSON.stringify(data)
@@ -89,7 +90,7 @@ class App extends React.Component{
     var data = {user: document.getElementsByName('username')[0].value};
     
     console.log(JSON.stringify(data));
-    fetch("https://server-for-faculty-dashboard.herokuapp.com:5000/fp", {
+    fetch("https://server-for-faculty-dashboard.herokuapp.com/fp", {
         method: 'POST',
         headers: {'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*'},
         body: JSON.stringify(data)
@@ -137,7 +138,7 @@ class App extends React.Component{
         this.setState({page: 3});
       }
       else if(value=='Leave'){
-        this.setState({page: 0});
+        this.setState({page: 4});
       }
       else{
         this.setState({page: 0});
@@ -272,7 +273,13 @@ class App extends React.Component{
         <div className='col-lg-2 Navbut' onClick={this.handleChange}> Logout <img src={user} className='User-logo' alt='User' /></div>
         </div>
         <hr/>
-        <LMS />
+        {this.state.page==0?(<LMS />):(
+          this.state.page==1?(<UC />):(
+            this.state.page==2?(<UC />):(
+              this.state.page==3?(<UC />):(
+                this.state.page==4?(<UC />):(
+                  <UC />
+          )))))}
       </div>
 
       </div>
