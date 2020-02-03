@@ -49,8 +49,8 @@ class App extends React.Component{
         self.setState({login: 1});
         }
         else if(data.res.length == 0){
-          console.log('Account does not exist!');
-          alert('Account does not exist!');
+          console.log('Incorrect credentials!');
+          alert('Incorrect credentials!');
         }
         else{
           console.log('Failure');
