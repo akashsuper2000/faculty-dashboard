@@ -18,7 +18,7 @@ class App extends React.Component{
     super(props);
     this.state = {
       page: 0,
-      login: 1,
+      login: 0,
       user: 'User'
     }
   }
@@ -124,7 +124,13 @@ class App extends React.Component{
       }
     }
     else{
-      var value = e.target.innerHTML.split(' ')[0]
+      var value = e.target.innerHTML.split(' ')[0];
+      for(var i=0;i<e.target.parentNode.children.length;i++){
+        e.target.parentNode.children[i].style.fontSize = 'medium';
+        e.target.parentNode.children[i].style.fontWeight = 'normal';
+      }
+      e.target.style.fontSize = 'large';
+      e.target.style.fontWeight = 'bold';
       if(value=='My'){
         this.setState({page: 0});
       }
@@ -265,7 +271,7 @@ class App extends React.Component{
 
       <div>
         <div className='row Topbar'>
-        <div className='col-lg-2 Navbut' onClick={this.handleChange}>My Profile</div>
+        <div className='col-lg-2 Navbut' style={{fontWeight: 'bold', fontSize: 'large'}} onClick={this.handleChange}>My Profile</div>
         <div className='col-lg-2 Navbut' onClick={this.handleChange}>Course Handled</div>
         <div className='col-lg-2 Navbut' onClick={this.handleChange}>Time Table</div>
         <div className='col-lg-2 Navbut' onClick={this.handleChange}>Announcements</div>
@@ -273,11 +279,11 @@ class App extends React.Component{
         <div className='col-lg-2 Navbut' onClick={this.handleChange}> Logout <img src={user} className='User-logo' alt='User' /></div>
         </div>
         <hr/>
-        {this.state.page==0?(<LMS />):(
+        {this.state.page==0?(<UC />):(
           this.state.page==1?(<UC />):(
             this.state.page==2?(<UC />):(
               this.state.page==3?(<UC />):(
-                this.state.page==4?(<UC />):(
+                this.state.page==4?(<LMS />):(
                   <UC />
           )))))}
       </div>
