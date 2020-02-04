@@ -144,12 +144,10 @@ class App extends React.Component{
     }
     else{
       var value = e.target.innerHTML.split(' ')[0];
-      for(var i=0;i<e.target.parentNode.children.length;i++){
-        e.target.parentNode.children[i].style.fontSize = 'medium';
-        e.target.parentNode.children[i].style.fontWeight = 'normal';
+      for(var i=0;i<e.target.parentNode.parentNode.children.length;i++){
+        e.target.parentNode.parentNode.children[i].children[0].style.borderStyle = 'none';
       }
-      e.target.style.fontSize = 'large';
-      e.target.style.fontWeight = 'bold';
+      e.target.style.borderStyle = 'solid';
       if(value=='My'){
         this.setState({page: 0});
       }
@@ -290,12 +288,12 @@ class App extends React.Component{
 
       <div>
         <div className='row Topbar'>
-        <div className='col-lg-2 Navbut' style={{fontWeight: 'bold', fontSize: 'large'}} onClick={this.handleChange}>My Profile</div>
-        <div className='col-lg-2 Navbut' onClick={this.handleChange}>Course Handled</div>
-        <div className='col-lg-2 Navbut' onClick={this.handleChange}>Time Table</div>
-        <div className='col-lg-2 Navbut' onClick={this.handleChange}>Announcements</div>
-        <div className='col-lg-2 Navbut' onClick={this.handleChange}>Leave Management</div>
-        <div className='col-lg-2 Navbut' onClick={this.handleChange}> Logout <img src={user} className='User-logo' alt='User' /></div>
+        <div className='col-lg-2' onClick={this.handleChange}><span style={{borderStyle: 'solid'}} className='Navbut'>My Profile</span></div>
+        <div className='col-lg-2' onClick={this.handleChange}><span className='Navbut'>Course Handled</span></div>
+        <div className='col-lg-2' onClick={this.handleChange}><span className='Navbut'>Time Table</span></div>
+        <div className='col-lg-2' onClick={this.handleChange}><span className='Navbut'>Announcements</span></div>
+        <div className='col-lg-2' onClick={this.handleChange}><span className='Navbut'>Leave Management</span></div>
+        <div className='col-lg-2' onClick={this.handleChange}><span className='Navbut'>Logout <img src={user} className='User-logo' alt='User' /></span></div>
         </div>
         <hr/>
         {this.state.page==0?(<UC />):(
