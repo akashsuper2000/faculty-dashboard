@@ -179,7 +179,7 @@ class App extends React.Component{
 
         <div className='Container'>
         <div className='Box'>
-          <img src={user} className='UserLogoLogin' alt='User' />
+          <img src={user} className='Userloginlogo' alt='User' />
           <h1 className='Heads'>Sign In</h1>
           <div className='Content'>
           <form onSubmit={this.handleLogin}>
@@ -213,7 +213,7 @@ class App extends React.Component{
 
         <div className='Container'>
         <div className='Box'>
-        <img src={user} className='UserLogoLogin' alt='User' />
+        <img src={user} className='Userloginlogo' alt='User' />
           <h1 className='Heads'>Register</h1>
           <div className='Content'>
           <form onSubmit={this.handleRegister}>
@@ -259,7 +259,7 @@ class App extends React.Component{
 
         <div className='Container'>
         <div className='Box'>
-        <img src={user} className='UserLogoLogin' alt='User' />
+        <img src={user} className='Userloginlogo' alt='User' />
           <h1 className='Heads'>Forgot Password</h1>
           <div className='Content'>
           <form onSubmit={this.handleFP}>
@@ -302,7 +302,7 @@ class App extends React.Component{
         <div className='col-lg-2' onClick={this.handleChange}><span className='Navbut'>Time Table</span></div>
         <div className='col-lg-2' onClick={this.handleChange}><span className='Navbut'>Announcements</span></div>
         <div className='col-lg-2' onClick={this.handleChange}><span className='Navbut'>Leave Management</span></div>
-        <div className='col-lg-2' onClick={this.handleChange} title='Logout'><span className='Navbut'>{this.state.user} <img src={user} className='User-logo' alt='User' /></span></div>
+        <div className='col-lg-2' onClick={this.handleChange} title='Logout'><span className='Navbut'>{this.state.user} <img src={user} className='Userlogo' alt='User' /></span></div>
         </div>
         <hr/>
         {this.state.page==0?(<UC />):(
