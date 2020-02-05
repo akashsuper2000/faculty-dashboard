@@ -179,6 +179,7 @@ class App extends React.Component{
 
         <div className='Container'>
         <div className='Box'>
+          <img src={user} className='UserLogoLogin' alt='User' />
           <h1 className='Heads'>Sign In</h1>
           <div className='Content'>
           <form onSubmit={this.handleLogin}>
@@ -193,7 +194,7 @@ class App extends React.Component{
           <span className='Subheads' name='passinv' style={{visibility: 'collapse'}}>Invalid password!</span>
           </div>
 
-          <input className='btn-lg btn btn-default' type='submit' value='Login'/><br/>
+          <input className='btn-lg btn btn-default InputBoxes' type='submit' value='Login'/><br/>
           <div className='FormGroup'>
           <input className='btn-md btn btn-default Smbtn' value='Register' onClick={this.handleChange}/>
           <input className='btn-md btn btn-default Smbtn' value='Forgot Password?' onClick={this.handleChange}/>
@@ -212,6 +213,7 @@ class App extends React.Component{
 
         <div className='Container'>
         <div className='Box'>
+        <img src={user} className='UserLogoLogin' alt='User' />
           <h1 className='Heads'>Register</h1>
           <div className='Content'>
           <form onSubmit={this.handleRegister}>
@@ -238,7 +240,7 @@ class App extends React.Component{
           />
           </div>
 
-          <input className='btn-lg btn btn-default' type='submit' value='Register'/><br/>
+          <input className='btn-lg btn btn-default InputBoxes' type='submit' value='Register'/><br/>
           <div className='FormGroup'>
           <input className='btn-md btn btn-default Smbtn' value='Login' onClick={this.handleChange}/>
           <input className='btn-md btn btn-default Smbtn' value='Forgot Password?' onClick={this.handleChange}/>
@@ -257,15 +259,22 @@ class App extends React.Component{
 
         <div className='Container'>
         <div className='Box'>
+        <img src={user} className='UserLogoLogin' alt='User' />
           <h1 className='Heads'>Forgot Password</h1>
           <div className='Content'>
           <form onSubmit={this.handleFP}>
 
           <div className='FormGroup'>
           <span className='Subheads' name='otp-thing'>Send the password to the registered Email ID?</span>
+          <span className='Subheads' name='userinv' style={{visibility: 'collapse'}}>This is the header!</span>
           </div>
+          <div className='FormGroup'>
           <input className='InputBoxes' name='username' placeholder='Username' required></input>
-          <input className='btn-lg btn btn-default' type='submit' value='Send'/><br/>
+          <span className='Subheads' name='userinv' style={{visibility: 'collapse'}}>Enter a Username!</span>
+          </div>
+          <div className='FormGroup'>
+          <input className='btn-lg btn btn-default InputBoxes' type='submit' value='Send'/><br/>
+          </div>
           <div className='FormGroup'>
           <input className='btn-md btn btn-default Smbtn' value='Login' onClick={this.handleChange}/>
           <input className='btn-md btn btn-default Smbtn' value='Register' onClick={this.handleChange}/>
@@ -293,7 +302,7 @@ class App extends React.Component{
         <div className='col-lg-2' onClick={this.handleChange}><span className='Navbut'>Time Table</span></div>
         <div className='col-lg-2' onClick={this.handleChange}><span className='Navbut'>Announcements</span></div>
         <div className='col-lg-2' onClick={this.handleChange}><span className='Navbut'>Leave Management</span></div>
-        <div className='col-lg-2' onClick={this.handleChange}><span className='Navbut'>Logout <img src={user} className='User-logo' alt='User' /></span></div>
+        <div className='col-lg-2' onClick={this.handleChange} title='Logout'><span className='Navbut'>{this.state.user} <img src={user} className='User-logo' alt='User' /></span></div>
         </div>
         <hr/>
         {this.state.page==0?(<UC />):(
