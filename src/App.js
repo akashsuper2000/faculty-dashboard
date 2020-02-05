@@ -20,15 +20,16 @@ class App extends React.Component{
       page: 0,
       login: 0,
       user: 'User',
-      sendurl: 'https://server-for-faculty-dashboard.herokuapp.com/'
+      //https://server-for-faculty-dashboard.herokuapp.com/
+      sendurl: 'http://localhost:5000/'
     }
   }
 
   handleLogin = (e) => {
     e.preventDefault();
     let self = this;
-    var data = {user: document.getElementsByName('username')[0].value,
-    pass: document.getElementsByName('password')[0].value};
+    var data = {id: document.getElementsByName('id')[0].value,
+    password: document.getElementsByName('password')[0].value};
 
     console.log(JSON.stringify(data));
     fetch(self.state.sendurl+"login", {
@@ -45,7 +46,7 @@ class App extends React.Component{
         data = JSON.parse(data); 
         if(data.res.length == 1){
         console.log('Success');
-        self.setState({user: document.getElementsByName('username')[0].value});
+        self.setState({user: data.res[0].name});
         self.setState({login: 1});
         }
         else if(data.res.length == 0){
@@ -64,9 +65,11 @@ class App extends React.Component{
   handleRegister = (e) => {
     e.preventDefault();
     let self = this;
-    var data = {user: document.getElementsByName('username')[0].value,
+    var data = {id: document.getElementsByName('id')[0].value,
+    name: document.getElementsByName('name')[0].value,
+    dept: document.getElementsByName('dept')[0].value,
     email: document.getElementsByName('email')[0].value,
-    pass: document.getElementsByName('password')[0].value};
+    password: document.getElementsByName('password')[0].value};
     
     console.log(JSON.stringify(data));
     fetch(self.state.sendurl+"register", {
@@ -101,7 +104,7 @@ class App extends React.Component{
   handleFP = (e) => {
     e.preventDefault();
     let self = this;
-    var data = {user: document.getElementsByName('username')[0].value};
+    var data = {id: document.getElementsByName('id')[0].value};
     
     console.log(JSON.stringify(data));
     fetch(self.state.sendurl+"fp", {
@@ -185,7 +188,7 @@ class App extends React.Component{
           <form onSubmit={this.handleLogin}>
 
           <div className='FormGroup'>
-          <input className='InputBoxes' name='username' placeholder='Username' required></input>
+          <input className='InputBoxes' name='id' placeholder='Faculty ID' required></input>
           <span className='Subheads' name='userinv' style={{visibility: 'collapse'}}>Enter a username!</span>
           </div>
 
@@ -219,7 +222,29 @@ class App extends React.Component{
           <form onSubmit={this.handleRegister}>
 
           <div className='FormGroup'>
-          <input className='InputBoxes' name='username' placeholder='Username' required></input>
+          <input className='InputBoxes' name='id' placeholder='Faculty ID' required></input>
+          <span className='Subheads' name='userinv' style={{visibility: 'collapse'}}>Enter a username!</span>
+          </div>
+
+          <div className='FormGroup'>
+          <input className='InputBoxes' name='name' placeholder='Full Name' required></input>
+          <span className='Subheads' name='userinv' style={{visibility: 'collapse'}}>Enter a username!</span>
+          </div>
+
+          <div className='FormGroup'>
+          <select className='InputBoxes' name='dept' placeholder='Department' required>
+            <option default value='cse'>CSE</option>
+            <option value='ece'>ECE</option>
+            <option value='eee'>EEE</option>
+            <option value='mec'>MEC</option>
+            <option value='cvl'>CVL</option>
+            <option value='che'>CHE</option>
+            <option value='aro'>ARO</option>
+            <option value='sci'>SCI</option>
+            <option value='eng'>ENG</option>
+            <option value='mat'>MAT</option>
+            <option value='asc'>ASC</option>
+          </select>
           <span className='Subheads' name='userinv' style={{visibility: 'collapse'}}>Enter a username!</span>
           </div>
 
@@ -269,7 +294,7 @@ class App extends React.Component{
           <span className='Subheads' name='userinv' style={{visibility: 'collapse'}}>This is the header!</span>
           </div>
           <div className='FormGroup'>
-          <input className='InputBoxes' name='username' placeholder='Username' required></input>
+          <input className='InputBoxes' name='id' placeholder='Faculty ID' required></input>
           <span className='Subheads' name='userinv' style={{visibility: 'collapse'}}>Enter a Username!</span>
           </div>
           <div className='FormGroup'>
@@ -302,7 +327,7 @@ class App extends React.Component{
         <div className='col-lg-2' onClick={this.handleChange}><span className='Navbut'>Time Table</span></div>
         <div className='col-lg-2' onClick={this.handleChange}><span className='Navbut'>Announcements</span></div>
         <div className='col-lg-2' onClick={this.handleChange}><span className='Navbut'>Leave Management</span></div>
-        <div className='col-lg-2' onClick={this.handleChange} title='Logout'><span className='Navbut'>{this.state.user} <img src={user} className='Userlogo' alt='User' /></span></div>
+        <div className='col-lg-2' onClick={this.handleChange} title='Logout'><span className='Navbut'>{this.state.user}</span></div>
         </div>
         <hr/>
         {this.state.page==0?(<UC />):(

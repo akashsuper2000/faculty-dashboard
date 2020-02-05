@@ -35,10 +35,10 @@ var transporter = nodemailer.createTransport({
 });
 
 app.post('/login',(req,res)=>{
-  var {user, pass} = req.body;
-  console.log(user);
-  console.log(pass);
-  con.query("select * from users where username = '"+user+"' and password = '"+pass+"';", function (err, result, fields) {
+  var {id, password} = req.body;
+  console.log(id);
+  console.log(password);
+  con.query("select * from users where id=? and password=?", [id,password], function (err, result, fields) {
     if (err) console.log(err.sqlMessage);
     const abc={
       res:result,
@@ -49,11 +49,13 @@ app.post('/login',(req,res)=>{
 });
 
 app.post('/register',(req,res)=>{
-  var {user, email, pass} = req.body;
-  console.log(user);
+  var {id, name, dept, email, password} = req.body;
+  console.log(id);
+  console.log(name);
+  console.log(dept);
   console.log(email);
-  console.log(pass);
-  con.query("select * from users where username = '"+user+"';", function (err, result, fields) {
+  console.log(password);
+  con.query("select * from users where id=?", [id], function (err, result, fields) {
     if(err) console.log(err.sqlMessage);
     if(result.length>0){
       const abc={
@@ -65,7 +67,7 @@ app.post('/register',(req,res)=>{
     }
     else{
 
-      con.query("insert into users values ('"+user+"','"+pass+"','"+email+"');", function (err, result, fields) {
+      con.query("insert into users values (?,?,?,?,?)", [id,name,dept,email,password], function (err, result, fields) {
         if (err) console.log(err.sqlMessage);
         const abc={
           res:result,
@@ -81,10 +83,10 @@ app.post('/register',(req,res)=>{
 });
 
 app.post('/fp',(req,res)=>{
-  var {user} = req.body;
-  console.log(user);
+  var {id} = req.body;
+  console.log(id);
 
-  con.query("select password,email from users where username = '"+user+"';", function (err, result, fields) {
+  con.query("select password, email from users where id=?", [id], function (err, result, fields) {
     console.log(result);
     if (err) console.log(err.sqlMessage);
     else if(result.length == 0){
