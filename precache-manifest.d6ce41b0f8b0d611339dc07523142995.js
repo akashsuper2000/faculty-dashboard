@@ -1,23 +1,23 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "21adeaf8fb7ad59ecdb55427a5f4e78b",
+    "revision": "a13c9ea515873a07c90efc58c4655823",
     "url": "/faculty-dashboard/index.html"
   },
   {
-    "revision": "c4babd73886f3ae624d5",
+    "revision": "c815362b5bef431cc4d8",
     "url": "/faculty-dashboard/static/css/2.c6231af7.chunk.css"
   },
   {
-    "revision": "d1b1fa59abbaf1ac8d21",
-    "url": "/faculty-dashboard/static/css/main.534e62c2.chunk.css"
+    "revision": "aa3dd4a1974f398cd491",
+    "url": "/faculty-dashboard/static/css/main.31496d39.chunk.css"
   },
   {
-    "revision": "c4babd73886f3ae624d5",
-    "url": "/faculty-dashboard/static/js/2.9158b38d.chunk.js"
+    "revision": "c815362b5bef431cc4d8",
+    "url": "/faculty-dashboard/static/js/2.59c7020e.chunk.js"
   },
   {
-    "revision": "d1b1fa59abbaf1ac8d21",
-    "url": "/faculty-dashboard/static/js/main.e8ea0b76.chunk.js"
+    "revision": "aa3dd4a1974f398cd491",
+    "url": "/faculty-dashboard/static/js/main.4b86c7a2.chunk.js"
   },
   {
     "revision": "3fb3a872803882618d21",
