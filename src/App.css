@@ -60,14 +60,14 @@ input[type=submit]{
 }
 
 .Passbox{
-  width: 300px;
-  padding: 12px;
+  width: 300px !important;
+  padding: 12px !important;
   margin: 20px;
   margin-bottom: 0px;
-  border-radius: 50px;
-  border-style: solid;
+  border-radius: 50px !important;
+  border-style: solid !important;
   border-width: 2px;
-  font-size: 16px;
+  font-size: 15px !important;
 }
 
 .ReactPasswordStrength-strength-bar{
@@ -98,12 +98,6 @@ input[type=submit]{
 
 .ReactPasswordStrength-strength-desc{
   font-size: 0px;
-}
-
-.ReactPasswordStrength-input{
-  border: 'solid';
-  font-size: 15px;
-  width: 300px;
 }
 
 .Container2{
