@@ -21,7 +21,7 @@ class App extends React.Component{
       login: 0,
       user: 'User',
       //https://server-for-faculty-dashboard.herokuapp.com/
-      sendurl: 'http://localhost:5000/'
+      sendurl: 'https://server-for-faculty-dashboard.herokuapp.com/'
     }
   }
 
