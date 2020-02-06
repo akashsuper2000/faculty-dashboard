@@ -197,7 +197,7 @@ class App extends React.Component{
           <span className='Subheads' name='passinv' style={{visibility: 'collapse'}}>Invalid password!</span>
           </div>
 
-          <input className='btn-lg btn btn-default InputBoxes' type='submit' value='Login'/><br/>
+          <input className='btn-lg btn btn-default InputBoxes Smbtn' type='submit' value='Login'/><br/>
           <div className='FormGroup'>
           <input className='btn-md btn btn-default Smbtn' value='Register' onClick={this.handleChange}/>
           <input className='btn-md btn btn-default Smbtn' value='Forgot Password?' onClick={this.handleChange}/>
@@ -265,7 +265,7 @@ class App extends React.Component{
           />
           </div>
 
-          <input className='btn-lg btn btn-default InputBoxes' type='submit' value='Register'/><br/>
+          <input className='btn-lg btn btn-default InputBoxes Smbtn' type='submit' value='Register'/><br/>
           <div className='FormGroup'>
           <input className='btn-md btn btn-default Smbtn' value='Login' onClick={this.handleChange}/>
           <input className='btn-md btn btn-default Smbtn' value='Forgot Password?' onClick={this.handleChange}/>
@@ -298,7 +298,7 @@ class App extends React.Component{
           <span className='Subheads' name='userinv' style={{visibility: 'collapse'}}>Enter a Username!</span>
           </div>
           <div className='FormGroup'>
-          <input className='btn-lg btn btn-default InputBoxes' type='submit' value='Send'/><br/>
+          <input className='btn-lg btn btn-default InputBoxes Smbtn' type='submit' value='Send'/><br/>
           </div>
           <div className='FormGroup'>
           <input className='btn-md btn btn-default Smbtn' value='Login' onClick={this.handleChange}/>
@@ -317,28 +317,27 @@ class App extends React.Component{
   else{
 
     return(
+      <div>
+      <div style={{backgroundColor: 'black'}}>
 
       <div className='Container2'>
-
-      <div>
         <div className='row Topbar'>
-        <div className='col-lg-2' onClick={this.handleChange}><span style={{borderStyle: 'solid'}} className='Navbut'>My Profile</span></div>
+        <div className='col-lg-2' onClick={this.handleChange} title={this.state.user}><span style={{borderStyle: 'solid'}} className='Navbut'>My Profile</span></div>
         <div className='col-lg-2' onClick={this.handleChange}><span className='Navbut'>Course Handled</span></div>
         <div className='col-lg-2' onClick={this.handleChange}><span className='Navbut'>Time Table</span></div>
         <div className='col-lg-2' onClick={this.handleChange}><span className='Navbut'>Announcements</span></div>
         <div className='col-lg-2' onClick={this.handleChange}><span className='Navbut'>Leave Management</span></div>
-        <div className='col-lg-2' onClick={this.handleChange} title='Logout'><span className='Navbut'>{this.state.user}</span></div>
+        <div className='col-lg-2' onClick={this.handleChange}><span className='Navbut'>Logout</span></div>
         </div>
-        <hr/>
-        {this.state.page==0?(<UC />):(
+      </div>
+
+      </div>
+      {this.state.page==0?(<UC />):(
           this.state.page==1?(<UC />):(
             this.state.page==2?(<UC />):(
               this.state.page==3?(<UC />):(
-                this.state.page==4?(<LMS />):(
-                  <UC />
-          )))))}
-      </div>
-
+                this.state.page==4?(<LMS />):(<UC />)
+      ))))}
       </div>
 
       );
