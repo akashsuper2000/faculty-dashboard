@@ -197,7 +197,7 @@ class App extends React.Component{
           <span className='Subheads' name='passinv' style={{visibility: 'collapse'}}>Invalid password!</span>
           </div>
 
-          <input className='btn-lg btn btn-default InputBoxes Smbtn' type='submit' value='Login'/><br/>
+          <input className='btn-lg btn btn-default InputBoxes Select' type='submit' value='Login'/><br/>
           <div className='FormGroup'>
           <input className='btn-md btn btn-default Smbtn' value='Register' onClick={this.handleChange}/>
           <input className='btn-md btn btn-default Smbtn' value='Forgot Password?' onClick={this.handleChange}/>
@@ -265,7 +265,7 @@ class App extends React.Component{
           />
           </div>
 
-          <input className='btn-lg btn btn-default InputBoxes Smbtn' type='submit' value='Register'/><br/>
+          <input className='btn-lg btn btn-default InputBoxes Select' type='submit' value='Register'/><br/>
           <div className='FormGroup'>
           <input className='btn-md btn btn-default Smbtn' value='Login' onClick={this.handleChange}/>
           <input className='btn-md btn btn-default Smbtn' value='Forgot Password?' onClick={this.handleChange}/>
@@ -298,7 +298,7 @@ class App extends React.Component{
           <span className='Subheads' name='userinv' style={{visibility: 'collapse'}}>Enter a Username!</span>
           </div>
           <div className='FormGroup'>
-          <input className='btn-lg btn btn-default InputBoxes Smbtn' type='submit' value='Send'/><br/>
+          <input className='btn-lg btn btn-default InputBoxes Select' type='submit' value='Send'/><br/>
           </div>
           <div className='FormGroup'>
           <input className='btn-md btn btn-default Smbtn' value='Login' onClick={this.handleChange}/>
