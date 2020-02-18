@@ -12,6 +12,11 @@ class App extends React.Component{
 
   componentDidMount(){
     document.title = 'Faculty Dashboard';
+    if (document.cookie.split(';').filter((item) => item.trim().startsWith('user=')).length) {
+      var user = document.cookie.replace(/(?:(?:^|.*;\s*)user\s*\=\s*([^;]*).*$)|^.*$/, "$1");
+      this.setState({user: user});
+      this.setState({login: 1});
+    }
   }
 
   constructor(props){
@@ -48,6 +53,7 @@ class App extends React.Component{
         console.log('Success');
         self.setState({user: data.res[0].name});
         self.setState({login: 1});
+        document.cookie = 'user='+self.state.user;
         }
         else if(data.res.length == 0){
           console.log('Incorrect credentials!');
@@ -169,6 +175,7 @@ class App extends React.Component{
       else{
         this.setState({page: 0});
         this.setState({login: 0});
+        document.cookie = "user=; expires=Thu, 01 Jan 1970 00:00:00 UTC;";
       }
     }
   }
@@ -202,7 +209,7 @@ class App extends React.Component{
           <input className='btn-md btn btn-default Smbtn' value='Register' onClick={this.handleChange}/>
           <input className='btn-md btn btn-default Smbtn' value='Forgot Password?' onClick={this.handleChange}/>
           </div>
-          </form>       
+          </form> 
               
           </div>
         </div>
