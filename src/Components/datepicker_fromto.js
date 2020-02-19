@@ -35,7 +35,7 @@ export class DatePickerFromTo extends React.Component {
     console.log(from);
     if(from===undefined) return;
     var d = new Date(from);
-    d = d.getDate()+'/'+(d.getMonth()+1)+'/'+d.getFullYear();
+    // d = d.getDate()+'/'+(d.getMonth()+1)+'/'+d.getFullYear();
     console.log(d);
     this.props.fromDate(d);
   }
@@ -52,7 +52,7 @@ export class DatePickerFromTo extends React.Component {
     console.log(to);
     if(to===undefined) return;
     var d = new Date(to);
-    d = d.getDate()+'/'+(d.getMonth()+1)+'/'+d.getFullYear();
+    // d = d.getDate()+'/'+(d.getMonth()+1)+'/'+d.getFullYear();
     console.log(d);
     this.props.toDate(d);
   }

@@ -1,6 +1,6 @@
-const express= require('express');
-const bodyParser=require('body-parser');
-const cors=require('cors');
+const express = require('express');
+const bodyParser = require('body-parser');
+const cors = require('cors');
 const nodemailer = require('nodemailer');
 const mysql = require('mysql');
 const aws = require( 'aws-sdk' );
@@ -135,6 +135,16 @@ app.post('/fp',(req,res)=>{
     });
 });
 
+
+
+
+
+
+
+
+
+
+
 const profileImgUpload = multer({
  storage: multerS3({
   s3: s3,
@@ -170,6 +180,130 @@ profileImgUpload( req, res, ( error ) => {
   }
  });
 });
+
+
+
+
+
+
+
+
+
+app.post('/leavelog',(req,res)=>{
+    var id = req.body.username;
+    var isHOD = req.body.isHOD;
+    var query;
+    if(isHOD)
+        query = "select * from leavelog L,users U,department D where L.appliedby=U.id and U.dept=D.dept and D.id='"+id+"';";
+    else
+        query = "select * from leavelog where appliedby = '"+id+"';";
+    console.log(query);
+    con.query(query, function(err, result, fields) {
+        // console.log(fields);
+        var table = {
+            columns: fields,
+            entries: result
+        }
+        res.json(JSON.stringify(table));
+    })
+})
+
+app.post('/approvedecline',(req,res)=>{
+    var id = req.body.username;
+    var query = "select * from leavelog L,users U,department D where L.appliedby=U.id and U.dept=D.dept and D.id='"+id+"' and L.status='Pending';";
+    console.log(query);
+    con.query(query, function(err, result, fields) {
+        // console.log(fields);
+        var table = {
+            columns: fields,
+            entries: result
+        }
+        res.json(JSON.stringify(table));
+    })
+})
+
+app.post('/approve',(req,res)=>{
+    var id = req.body.leaveid;
+    var query = "UPDATE leavelog SET status = 'Approved' WHERE leaveid = '"+id+"';";
+    console.log(query);
+    con.query(query, function(err, result, fields) {
+        var table = {
+            dummy: true
+        }
+        res.json(JSON.stringify(table));
+    })
+})
+
+app.post('/decline',(req,res)=>{
+    var id = req.body.leaveid;
+    var query = "UPDATE leavelog SET status = 'Declined' WHERE leaveid = '"+id+"';";
+    console.log(query);
+    con.query(query, function(err, result, fields) {
+        var table = {
+            dummy: true
+        }
+        res.json(JSON.stringify(table));
+    })
+})
+
+// async function genid()
+// {
+//     var newLeaveID = 0;
+//     var query = "select MAX(leaveid) from leavelog;";
+// con.query(query, function(err, result, fields) {
+//         if(result.length!=0)
+//         {
+//             res = JSON.parse(JSON.stringify(result[0]));
+//             console.log(res['MAX(leaveid)']);
+//             newLeaveID = res['MAX(leaveid)'];
+            
+//         }
+//         newLeaveID++;
+//         console.log(newLeaveID);
+//         return newLeaveID;
+//     })
+    
+// }
+
+app.post('/apply',(req,res)=>{
+    // var x = genid().then(function(res){console.log(res)})
+    // console.log(x)
+    console.log(req.body);
+    var query = "insert into leavelog(appliedby,request_type,startfrom,ends_on,reason,status) values('"+req.body.appliedby+"','"+req.body.leaveType+"','"+req.body.startDate+"','"+req.body.endDate+"','"+req.body.reason+"','Pending');";
+    console.log(query);
+    con.query(query, function(err, result, fields) {
+        if(err) {console.log(err);}
+        // console.log(result.affecctedRows);
+        var table = {
+            dummy: true
+        }
+        res.json(JSON.stringify(table));
+    })
+})
+
+app.post('/verify',(req,res)=>{
+    var id = req.body.username;
+    var query = "select * from department where id = '"+id+"';";
+    console.log(query);
+    con.query(query, function(err, result, fields) {
+        var table = {
+            isHOD: false
+        }
+        console.log(result);
+        if(result.length != 0)
+            table.isHOD = true;
+        console.log(table);
+        res.json(JSON.stringify(table));
+    })
+})
+
+
+
+
+
+
+
+
 
 
 

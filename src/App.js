@@ -1,14 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import ReactPasswordStrength from 'react-password-strength';
-import './bootstrap.css';
-import './App.css';
-import user from './Components/user.svg';
 
 import UC from './Components/uc.js';
 import LMS from './Components/lms.js';
 import ViewSchedule from './Components/ViewSchedule.jsx';
 import ViewCoursePlan from './Components/ViewCoursePlan.jsx';
+
+import './bootstrap.css';
+import './App.css';
+import user from './Components/user.svg';
 
 
 class App extends React.Component{
@@ -346,7 +347,7 @@ class App extends React.Component{
           this.state.page==1?(<ViewCoursePlan facultyId={this.state.user} />):(
             this.state.page==2?(<ViewSchedule facultyId={this.state.user} />):(
               this.state.page==3?(<UC facultyId={this.state.user} />):(
-                this.state.page==4?(<LMS />):(<UC facultyId={this.state.user} />)
+                this.state.page==4?(<LMS facultyId={this.state.user} />):(<UC facultyId={this.state.user} />)
       ))))}
       </div>
 
