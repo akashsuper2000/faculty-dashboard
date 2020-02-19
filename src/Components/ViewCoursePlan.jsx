@@ -34,7 +34,7 @@ class ViewCoursePlan extends Component {
         if(this.state.filename!='')
           data.append( 'profileImage', this.state.filename, this.state.filename.name );
       console.log("UPLOADING IMAGE",this.state.filename);
-      axios.post( 'https://server-for-faculty-dashboard.herokuapp.com/', data, {
+      axios.post( 'https://server-for-faculty-dashboard.herokuapp.com/img', data, {
           headers: {
            'accept': 'application/json',
            'Accept-Language': 'en-US,en;q=0.8',

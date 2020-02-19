@@ -18,10 +18,10 @@ app.use(bodyParser.json());
 app.use(cors());
 
 const s3 = new aws.S3({
- accessKeyId: 'ASIAV3K2QLFHWQK6GSP3',
- secretAccessKey: '+ATHCe+7lCD+2Y6ZLHiSJ1wvjXBZW/FhkfnIxj3L',
+ aws_access_key_id: 'ASIAV3K2QLFHSL2Z6JEE',
+ secretAccessKey: 'rXmBfwJrQ/BM5pEcirf7NfDjDcsvKYjL6wvYSSVH',
  dir: 'imgs',
- sessionToken:'FwoGZXIvYXdzEEkaDNY7fkf23r5+qkEidiLWAX5m8VsZ6URsuj3Y6dts3+WX3IueOzNjOKnDNHyhYPZ03/BkRJMFrzIGROeRyEqsvWVppVZN4MGVobomy/WDR7z2dzFUsYYFS6v4ePDvNQ4ADL+dvL++n8h75skuS1APDQmtOvfrmu6mXDG8IneMrINUtvZXV/978cdOeTIZFudCRgQZBXz2OWUk7HmAat2HhvFq31jToD6KF71hyRMyqNhyll/g5lcpaublpqk6kIWUWaC945Zq4INzJLBTwW2YwYRr2AKyYwHDTD7zNp8WGAz5HY5RCGQo7KS18gUyLdjy+wnf7sYoUozKJ1QKAMMZk7r+jSBMunIxBA8Usf9veGfFGxVvqP+PSnBIMg==',
+ sessionToken:'FwoGZXIvYXdzEEoaDNo684Bp2IZO1p9qnSLWAUHbdSPhlzzEfGhSenlYPfZjHEa3AA6WPjMlmRgfPlaHnicRCarmf7NH1FOdjq66Qz+n62z6EcIYVuw5yISJ2m/FKM/ssPVBCtspo2ciFJfMgeRFV9ESbj+wLpMyd+RAIrk3+6t+TfmumnfeyhuYZ9xctEfRcJyFbMdJEfYjqpHoFlX7ftjfiRsaiOEM+wc8vpdQZ43BcA426k8SgCXvkFA9qMj+l9M9p9tvdP2Mumgxl+ZKO2EHd5PdhVUiRJJGXsLH/zchSpRPo67cHX2j4KoUr5v9Xlgolc618gUyLZfOnB8LIRPDZzKZSeb26sZVSvgeFLBNqndhnQqJqzqmDcYEa8Wsm7xE98iztQ==',
  Bucket: 'seschedule'
 });
 
