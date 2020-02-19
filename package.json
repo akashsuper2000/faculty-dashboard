@@ -4,12 +4,18 @@
   "private": true,
   "homepage": "https://akashsuper2000.github.io/faculty-dashboard",
   "dependencies": {
+    "aws": "^0.0.3-2",
+    "aws-sdk": "^2.621.0",
+    "axios": "^0.19.2",
     "cors": "^2.8.5",
     "gh-pages": "^2.1.1",
     "moment": "^2.24.0",
+    "multer": "^1.4.2",
+    "multer-s3": "^2.9.0",
     "mysql": "^2.17.1",
     "nodemailer": "^6.4.2",
     "nodemon": "^2.0.1",
+    "path": "^0.12.7",
     "react": "^16.12.0",
     "react-bootstrap": "^1.0.0-beta.16",
     "react-day-picker": "^7.4.0",
@@ -17,7 +23,10 @@
     "react-helmet": "^5.2.1",
     "react-password-strength": "^2.4.0",
     "react-router-dom": "^5.1.2",
-    "react-scripts": "3.2.0"
+    "react-scripts": "3.2.0",
+    "react-share": "^4.0.1",
+    "react-sharingbuttons": "^1.0.0",
+    "url": "^0.11.0"
   },
   "scripts": {
     "start": "react-scripts start",

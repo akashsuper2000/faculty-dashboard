@@ -4,9 +4,12 @@ import ReactPasswordStrength from 'react-password-strength';
 import './bootstrap.css';
 import './App.css';
 import user from './Components/user.svg';
-import UC from './Components/uc.js';
 
+import UC from './Components/uc.js';
 import LMS from './Components/lms.js';
+import ViewSchedule from './Components/ViewSchedule.jsx';
+import ViewCoursePlan from './Components/ViewCoursePlan.jsx';
+
 
 class App extends React.Component{
 
@@ -51,7 +54,7 @@ class App extends React.Component{
         data = JSON.parse(data); 
         if(data.res.length == 1){
         console.log('Success');
-        self.setState({user: data.res[0].name});
+        self.setState({user: data.res[0].id});
         self.setState({login: 1});
         document.cookie = 'user='+self.state.user;
         }
@@ -256,7 +259,7 @@ class App extends React.Component{
           </div>
 
           <div className='FormGroup'>
-          <input className='InputBoxes' name='email' placeholder='Email ID' pattern='^[a-zA-Z0-9]+@[a-zA-Z0-9]+.[a-zA-Z0-9]+$' required></input>
+          <input className='InputBoxes' name='email' placeholder='Email ID' title='Please enter a valid Email ID' pattern='^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[a-zA-Z0-9]+$' required></input>
           <span className='Subheads' name='userinv' style={{visibility: 'collapse'}}>Enter an Email!</span>
           </div>
 
@@ -268,7 +271,7 @@ class App extends React.Component{
             minScore={2}
             scoreWords={['Weak', 'Okay', 'Good', 'Strong', 'Stronger']}
             tooShortWord={'Too short'}
-            inputProps={{ name: "password", autoComplete: "off", className: "Passbox", placeholder: "Password", required: 'true', pattern: '^.{5}.*$' }}
+            inputProps={{ name: "password", title: 'Minimum length is 5', autoComplete: "off", className: "Passbox", placeholder: "Password", required: 'true', pattern: '^.{5}.*$' }}
           />
           </div>
 
@@ -339,11 +342,11 @@ class App extends React.Component{
       </div>
 
       </div>
-      {this.state.page==0?(<UC />):(
-          this.state.page==1?(<UC />):(
-            this.state.page==2?(<UC />):(
-              this.state.page==3?(<UC />):(
-                this.state.page==4?(<LMS />):(<UC />)
+      {this.state.page==0?(<UC facultyId={this.state.user} />):(
+          this.state.page==1?(<ViewCoursePlan facultyId={this.state.user} />):(
+            this.state.page==2?(<ViewSchedule facultyId={this.state.user} />):(
+              this.state.page==3?(<UC facultyId={this.state.user} />):(
+                this.state.page==4?(<LMS />):(<UC facultyId={this.state.user} />)
       ))))}
       </div>
 
