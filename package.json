@@ -24,6 +24,7 @@
     "react-helmet": "^5.2.1",
     "react-lottie": "^1.2.3",
     "react-password-strength": "^2.4.0",
+    "react-recaptcha-google": "^1.1.1",
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.2.0",
     "react-share": "^4.0.1",
