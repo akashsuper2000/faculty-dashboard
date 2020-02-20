@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import ReactPasswordStrength from 'react-password-strength';
 import { ReCaptcha } from 'react-recaptcha-google';
+import { loadReCaptcha } from 'react-recaptcha-google';
 
 import UC from './Components/uc.js';
 import LMS from './Components/lms.js';
@@ -16,6 +17,7 @@ import user from './Components/user.svg';
 class App extends React.Component{
 
   componentDidMount(){
+    loadReCaptcha();
     if (this.captchaDemo) {
       console.log('Captcha live!');
         this.captchaDemo.reset();
@@ -213,8 +215,7 @@ class App extends React.Component{
 
         <ReCaptcha
             ref={(el) => {this.captchaDemo = el;}}
-            size="normal"
-            data-theme="dark"            
+            size="invisible"
             render="explicit"
             sitekey="6LdYqNoUAAAAAEABmZvNgKyUYxQsNLMRl2u0rx6R"
             onloadCallback={this.onLoadRecaptcha}
@@ -258,8 +259,7 @@ class App extends React.Component{
 
         <ReCaptcha
             ref={(el) => {this.captchaDemo = el;}}
-            size="normal"
-            data-theme="dark"            
+            size="invisible"
             render="explicit"
             sitekey="6LdYqNoUAAAAAEABmZvNgKyUYxQsNLMRl2u0rx6R"
             onloadCallback={this.onLoadRecaptcha}
@@ -337,8 +337,7 @@ class App extends React.Component{
 
         <ReCaptcha
             ref={(el) => {this.captchaDemo = el;}}
-            size="normal"
-            data-theme="dark"            
+            size="invisible"
             render="explicit"
             sitekey="6LdYqNoUAAAAAEABmZvNgKyUYxQsNLMRl2u0rx6R"
             onloadCallback={this.onLoadRecaptcha}
