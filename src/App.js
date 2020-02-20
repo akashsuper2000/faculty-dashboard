@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import ReactPasswordStrength from 'react-password-strength';
+import { ReCaptcha } from 'react-recaptcha-google';
 
 import UC from './Components/uc.js';
 import LMS from './Components/lms.js';
@@ -15,6 +16,11 @@ import user from './Components/user.svg';
 class App extends React.Component{
 
   componentDidMount(){
+    if (this.captchaDemo) {
+      console.log('Captcha live!');
+        this.captchaDemo.reset();
+        this.captchaDemo.execute();
+    }
     document.title = 'Faculty Dashboard';
     if (document.cookie.split(';').filter((item) => item.trim().startsWith('user=')).length) {
       var user = document.cookie.replace(/(?:(?:^|.*;\s*)user\s*\=\s*([^;]*).*$)|^.*$/, "$1");
@@ -32,6 +38,18 @@ class App extends React.Component{
       //https://server-for-faculty-dashboard.herokuapp.com/
       sendurl: 'https://server-for-faculty-dashboard.herokuapp.com/'
     }
+    this.onLoadRecaptcha = this.onLoadRecaptcha.bind(this);
+    this.verifyCallback = this.verifyCallback.bind(this);
+  }
+
+  onLoadRecaptcha() {
+      if (this.captchaDemo) {
+          this.captchaDemo.reset();
+          this.captchaDemo.execute();
+      }
+  }
+  verifyCallback(recaptchaToken) {
+    console.log(recaptchaToken)
   }
 
   handleLogin = (e) => {
@@ -192,6 +210,17 @@ class App extends React.Component{
       return(
 
         <div className='Container'>
+
+        <ReCaptcha
+            ref={(el) => {this.captchaDemo = el;}}
+            size="normal"
+            data-theme="dark"            
+            render="explicit"
+            sitekey="6LdYqNoUAAAAAEABmZvNgKyUYxQsNLMRl2u0rx6R"
+            onloadCallback={this.onLoadRecaptcha}
+            verifyCallback={this.verifyCallback}
+        />
+
         <div className='Box'>
           <img src={user} className='Userloginlogo' alt='User' />
           <h1 className='Heads'>Sign In</h1>
@@ -226,6 +255,17 @@ class App extends React.Component{
       return(
 
         <div className='Container'>
+
+        <ReCaptcha
+            ref={(el) => {this.captchaDemo = el;}}
+            size="normal"
+            data-theme="dark"            
+            render="explicit"
+            sitekey="6LdYqNoUAAAAAEABmZvNgKyUYxQsNLMRl2u0rx6R"
+            onloadCallback={this.onLoadRecaptcha}
+            verifyCallback={this.verifyCallback}
+        />
+
         <div className='Box'>
         <img src={user} className='Userloginlogo' alt='User' />
           <h1 className='Heads'>Register</h1>
@@ -294,6 +334,17 @@ class App extends React.Component{
       return(
 
         <div className='Container'>
+
+        <ReCaptcha
+            ref={(el) => {this.captchaDemo = el;}}
+            size="normal"
+            data-theme="dark"            
+            render="explicit"
+            sitekey="6LdYqNoUAAAAAEABmZvNgKyUYxQsNLMRl2u0rx6R"
+            onloadCallback={this.onLoadRecaptcha}
+            verifyCallback={this.verifyCallback}
+        />
+
         <div className='Box'>
         <img src={user} className='Userloginlogo' alt='User' />
           <h1 className='Heads'>Forgot Password</h1>
@@ -334,7 +385,7 @@ class App extends React.Component{
       <div className='Container2'>
         <div className='row Topbar'>
         <div className='col-lg-2' onClick={this.handleChange} title={this.state.user}><span style={{borderStyle: 'solid'}} className='Navbut'>My Profile</span></div>
-        <div className='col-lg-2' onClick={this.handleChange}><span className='Navbut'>Course Handled</span></div>
+        <div className='col-lg-2' onClick={this.handleChange}><span className='Navbut'>Course Plan</span></div>
         <div className='col-lg-2' onClick={this.handleChange}><span className='Navbut'>Time Table</span></div>
         <div className='col-lg-2' onClick={this.handleChange}><span className='Navbut'>Announcements</span></div>
         <div className='col-lg-2' onClick={this.handleChange}><span className='Navbut'>Leave Management</span></div>
