@@ -208,6 +208,21 @@ app.post('/leavelog',(req,res)=>{
     })
 })
 
+app.post('/announcements',(req,res)=>{
+  var id = req.body.username;
+  var query;
+  query = "select * from announcement where dept=(select dept from users where id='"+id+"');";
+  console.log(query);
+  con.query(query, function(err, result, fields) {
+      // console.log(fields);
+      var table = {
+          columns: fields,
+          entries: result
+      }
+      res.json(JSON.stringify(table));
+  })
+})
+
 app.post('/approvedecline',(req,res)=>{
     var id = req.body.username;
     var query = "select * from leavelog L,users U,department D where L.appliedby=U.id and U.dept=D.dept and D.id='"+id+"' and L.status='Pending';";
@@ -246,28 +261,7 @@ app.post('/decline',(req,res)=>{
     })
 })
 
-// async function genid()
-// {
-//     var newLeaveID = 0;
-//     var query = "select MAX(leaveid) from leavelog;";
-// con.query(query, function(err, result, fields) {
-//         if(result.length!=0)
-//         {
-//             res = JSON.parse(JSON.stringify(result[0]));
-//             console.log(res['MAX(leaveid)']);
-//             newLeaveID = res['MAX(leaveid)'];
-            
-//         }
-//         newLeaveID++;
-//         console.log(newLeaveID);
-//         return newLeaveID;
-//     })
-    
-// }
-
 app.post('/apply',(req,res)=>{
-    // var x = genid().then(function(res){console.log(res)})
-    // console.log(x)
     console.log(req.body);
     var query = "insert into leavelog(appliedby,request_type,startfrom,ends_on,reason,status) values('"+req.body.appliedby+"','"+req.body.leaveType+"','"+req.body.startDate+"','"+req.body.endDate+"','"+req.body.reason+"','Pending');";
     console.log(query);
@@ -279,6 +273,32 @@ app.post('/apply',(req,res)=>{
         }
         res.json(JSON.stringify(table));
     })
+})
+
+app.post('/applyAnn',(req,res)=>{
+  console.log(req.body);
+  
+  var annDept;
+  var query = "select dept from users where id='"+req.body.id+"';";
+  console.log(query);
+  con.query(query, function(err, result, fields) {
+      if(err) {console.log(err);}
+      result = JSON.parse(JSON.stringify(result))
+      // console.log(result.affecctedRows);
+      annDept = result[0].dept;
+      console.log(289,annDept);
+
+      query = "insert into announcement values('"+annDept+"','"+req.body.announcedate+"','"+req.body.announce+"');";
+      console.log(query);
+      con.query(query, function(err, result, fields) {
+          if(err) {console.log(err);}
+          // console.log(result.affecctedRows);
+          var table = {
+              dummy: true
+          }
+          res.json(JSON.stringify(table));
+      })
+  })
 })
 
 app.post('/verify',(req,res)=>{
@@ -293,6 +313,7 @@ app.post('/verify',(req,res)=>{
         if(result.length != 0)
             table.isHOD = true;
         console.log(table);
+        res.setHeader('Access-Control-Allow-Origin', '*');
         res.json(JSON.stringify(table));
     })
 })
