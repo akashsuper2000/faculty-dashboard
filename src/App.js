@@ -8,6 +8,7 @@ import UC from './Components/uc.js';
 import LMS from './Components/lms.js';
 import ViewSchedule from './Components/ViewSchedule.jsx';
 import ViewCoursePlan from './Components/ViewCoursePlan.jsx';
+import Announcements from './Components/announcements.js';
 
 import './bootstrap.css';
 import './App.css';
@@ -396,7 +397,7 @@ class App extends React.Component{
       {this.state.page==0?(<UC facultyId={this.state.user} />):(
           this.state.page==1?(<ViewCoursePlan facultyId={this.state.user} />):(
             this.state.page==2?(<ViewSchedule facultyId={this.state.user} />):(
-              this.state.page==3?(<UC facultyId={this.state.user} />):(
+              this.state.page==3?(<Announcements facultyId={this.state.user} />):(
                 this.state.page==4?(<LMS facultyId={this.state.user} />):(<UC facultyId={this.state.user} />)
       ))))}
       </div>

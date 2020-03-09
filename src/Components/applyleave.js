@@ -69,7 +69,6 @@ export class Apply extends React.Component {
 			}
 			return response.json();
 		}).then(data=>{
-			this.setState({isLoaded: true},);
 		}).catch(err=>{
 			console.log(err);
 		})
