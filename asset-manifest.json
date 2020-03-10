@@ -1,26 +1,25 @@
 {
   "files": {
-    "main.css": "/faculty-dashboard/static/css/main.c21d1e19.chunk.css",
-    "main.js": "/faculty-dashboard/static/js/main.86b6f2b0.chunk.js",
-    "main.js.map": "/faculty-dashboard/static/js/main.86b6f2b0.chunk.js.map",
+    "main.css": "/faculty-dashboard/static/css/main.94091928.chunk.css",
+    "main.js": "/faculty-dashboard/static/js/main.339c347c.chunk.js",
+    "main.js.map": "/faculty-dashboard/static/js/main.339c347c.chunk.js.map",
     "runtime-main.js": "/faculty-dashboard/static/js/runtime-main.62cee297.js",
     "runtime-main.js.map": "/faculty-dashboard/static/js/runtime-main.62cee297.js.map",
     "static/css/2.fa71fc11.chunk.css": "/faculty-dashboard/static/css/2.fa71fc11.chunk.css",
-    "static/js/2.c68d9f93.chunk.js": "/faculty-dashboard/static/js/2.c68d9f93.chunk.js",
-    "static/js/2.c68d9f93.chunk.js.map": "/faculty-dashboard/static/js/2.c68d9f93.chunk.js.map",
+    "static/js/2.828d52a3.chunk.js": "/faculty-dashboard/static/js/2.828d52a3.chunk.js",
+    "static/js/2.828d52a3.chunk.js.map": "/faculty-dashboard/static/js/2.828d52a3.chunk.js.map",
     "index.html": "/faculty-dashboard/index.html",
-    "precache-manifest.618d920c2b15125bf233a235e8bf5384.js": "/faculty-dashboard/precache-manifest.618d920c2b15125bf233a235e8bf5384.js",
+    "precache-manifest.676cd379be476b3dddcb9ea5f19e39e1.js": "/faculty-dashboard/precache-manifest.676cd379be476b3dddcb9ea5f19e39e1.js",
     "service-worker.js": "/faculty-dashboard/service-worker.js",
     "static/css/2.fa71fc11.chunk.css.map": "/faculty-dashboard/static/css/2.fa71fc11.chunk.css.map",
-    "static/css/main.c21d1e19.chunk.css.map": "/faculty-dashboard/static/css/main.c21d1e19.chunk.css.map",
-    "static/media/univlogo.svg": "/faculty-dashboard/static/media/univlogo.e9b8d5e7.svg",
-    "static/media/user.svg": "/faculty-dashboard/static/media/user.afcc9b05.svg"
+    "static/css/main.94091928.chunk.css.map": "/faculty-dashboard/static/css/main.94091928.chunk.css.map",
+    "static/media/univlogo.svg": "/faculty-dashboard/static/media/univlogo.e9b8d5e7.svg"
   },
   "entrypoints": [
     "static/js/runtime-main.62cee297.js",
     "static/css/2.fa71fc11.chunk.css",
-    "static/js/2.c68d9f93.chunk.js",
-    "static/css/main.c21d1e19.chunk.css",
-    "static/js/main.86b6f2b0.chunk.js"
+    "static/js/2.828d52a3.chunk.js",
+    "static/css/main.94091928.chunk.css",
+    "static/js/main.339c347c.chunk.js"
   ]
 }
