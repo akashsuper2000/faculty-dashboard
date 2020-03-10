@@ -3,8 +3,8 @@ import { Form, Col, Button } from 'react-bootstrap';
 
 import { Loading } from './loading';
 
-// const serverUrl = 'https://server-for-faculty-dashboard.herokuapp.com/';
-const serverUrl = 'http://localhost:5000/'
+const serverUrl = 'https://server-for-faculty-dashboard.herokuapp.com/';
+// const serverUrl = 'http://localhost:5000/'
 
 export default class Announcements extends React.Component {
 	constructor(props) {

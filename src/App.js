@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import ReactPasswordStrength from 'react-password-strength';
 import { ReCaptcha } from 'react-recaptcha-google';
 import { loadReCaptcha } from 'react-recaptcha-google';
+import { Loading } from './Components/loading.js';
 
 import UC from './Components/uc.js';
 import LMS from './Components/lms.js';
@@ -12,7 +13,6 @@ import Announcements from './Components/announcements.js';
 
 import './bootstrap.css';
 import './App.css';
-import user from './Components/user.svg';
 import univlogo from './Components/univlogo.svg';
 
 
@@ -39,6 +39,7 @@ class App extends React.Component{
       page: 0,
       login: 0,
       user: 'User',
+      loading: 0,
       //https://server-for-faculty-dashboard.herokuapp.com/
       sendurl: 'https://server-for-faculty-dashboard.herokuapp.com/'
     }
@@ -59,6 +60,7 @@ class App extends React.Component{
   handleLogin = (e) => {
     e.preventDefault();
     let self = this;
+    self.setState({loading: 1});
     var data = {id: document.getElementsByName('id')[0].value,
     password: document.getElementsByName('password')[0].value};
 
@@ -79,15 +81,18 @@ class App extends React.Component{
         console.log('Success');
         self.setState({user: data.res[0].id});
         self.setState({login: 1});
+        self.setState({loading: 0});
         document.cookie = 'user='+self.state.user;
         }
         else if(data.res.length == 0){
           console.log('Incorrect credentials!');
           alert('Incorrect credentials!');
+          self.setState({loading: 0});
         }
         else{
           console.log('Failure');
           alert('Something went wrong, Try again later!');
+          self.setState({loading: 0});
         }
     }).catch(function(err) {
         console.log(err);
@@ -211,51 +216,51 @@ class App extends React.Component{
     if(this.state.login==0){
 
     if(this.state.page==0){
-      return(
+      if(this.state.loading==0){
+        return(
 
-        <div className='Container'>
+          <div className='Container'>
 
-        <ReCaptcha
-            ref={(el) => {this.captchaDemo = el;}}
-            size="invisible"
-            render="explicit"
-            sitekey="6LdYqNoUAAAAAEABmZvNgKyUYxQsNLMRl2u0rx6R"
-            onloadCallback={this.onLoadRecaptcha}
-            verifyCallback={this.verifyCallback}
-        />
-        <div className='Divided row'>
-        <div className='Logo col-lg-6'>
-          <img src={univlogo} className='Univlogo' alt='University Logo' />
-        </div>
-        <div className='Box col-lg-6'>
-          <img src={user} className='Userloginlogo' alt='User' />
-          <h1 className='Heads'>Sign In</h1>
-          <div className='Content'>
-          <form onSubmit={this.handleLogin}>
+          <ReCaptcha
+              ref={(el) => {this.captchaDemo = el;}}
+              size="invisible"
+              render="explicit"
+              sitekey="6LdYqNoUAAAAAEABmZvNgKyUYxQsNLMRl2u0rx6R"
+              onloadCallback={this.onLoadRecaptcha}
+              verifyCallback={this.verifyCallback}
+          />
+          <div className='Box'>
+            <img src={univlogo} className='Userloginlogo' alt='User' />
+            <h1 className='Heads'>Login</h1>
+            <div className='Content'>
+            <form onSubmit={this.handleLogin}>
 
-          <div className='FormGroup'>
-          <input className='InputBoxes' name='id' placeholder='Faculty ID' required></input>
-          <span className='Subheads' name='userinv' style={{visibility: 'collapse'}}>Enter a username!</span>
+            <div className='FormGroup'>
+            <input className='InputBoxes' name='id' placeholder='Faculty ID' required></input>
+            <span className='Subheads' name='userinv' style={{visibility: 'collapse'}}>Enter a username!</span>
+            </div>
+
+            <div className='FormGroup'>
+            <input className='InputBoxes' name='password' type='password' placeholder='Password' required></input>
+            <span className='Subheads' name='passinv' style={{visibility: 'collapse'}}>Invalid password!</span>
+            </div>
+
+            <input className='btn-lg btn btn-default InputBoxes Select' type='submit' value='Login'/><br/>
+            <div className='FormGroup'>
+            <input className='btn-md btn btn-default Smbtn' value='Register' onClick={this.handleChange}/>
+            <input className='btn-md btn btn-default Smbtn' value='Forgot Password?' onClick={this.handleChange}/>
+            </div>
+            </form> 
+                
+            </div>
+          </div>
           </div>
 
-          <div className='FormGroup'>
-          <input className='InputBoxes' name='password' type='password' placeholder='Password' required></input>
-          <span className='Subheads' name='passinv' style={{visibility: 'collapse'}}>Invalid password!</span>
-          </div>
-
-          <input className='btn-lg btn btn-default InputBoxes Select' type='submit' value='Login'/><br/>
-          <div className='FormGroup'>
-          <input className='btn-md btn btn-default Smbtn' value='Register' onClick={this.handleChange}/>
-          <input className='btn-md btn btn-default Smbtn' value='Forgot Password?' onClick={this.handleChange}/>
-          </div>
-          </form> 
-              
-          </div>
-        </div>
-        </div>
-        </div>
-
-      );
+        );
+      }
+      else{
+        return (<Loading />);
+      }
     }
 
     else if(this.state.page==1){
@@ -271,12 +276,8 @@ class App extends React.Component{
             onloadCallback={this.onLoadRecaptcha}
             verifyCallback={this.verifyCallback}
         />
-        <div className='Divided row'>
-        <div className='Logo col-lg-6'>
-          <img src={univlogo} className='Univlogo' alt='University Logo' />
-        </div>
-        <div className='Box col-lg-6'>
-        <img src={user} className='Userloginlogo' alt='User' />
+        <div className='Box'>
+        <img src={univlogo} className='Userloginlogo' alt='User' />
           <h1 className='Heads'>Register</h1>
           <div className='Content'>
           <form onSubmit={this.handleRegister}>
@@ -335,7 +336,6 @@ class App extends React.Component{
           </div>
         </div>
         </div>
-        </div>
 
       );
     }
@@ -353,12 +353,8 @@ class App extends React.Component{
             onloadCallback={this.onLoadRecaptcha}
             verifyCallback={this.verifyCallback}
         />
-        <div className='Divided row'>
-        <div className='Logo col-lg-6'>
-          <img src={univlogo} className='Univlogo' alt='University Logo' />
-        </div>
-        <div className='Box col-lg-6'>
-        <img src={user} className='Userloginlogo' alt='User' />
+        <div className='Box'>
+        <img src={univlogo} className='Userloginlogo' alt='User' />
           <h1 className='Heads'>Forgot Password</h1>
           <div className='Content'>
           <form onSubmit={this.handleFP}>
@@ -381,7 +377,6 @@ class App extends React.Component{
           </form>       
               
           </div>
-        </div>
         </div>
         </div>
 
