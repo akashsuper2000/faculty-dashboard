@@ -13,8 +13,8 @@ jobs:
     - name: Build
       run: |
         sudo npm install yarn -g
-        yarn
-        yarn run-script build
+        sudo yarn
+        sudo yarn run-script build
 
     - name: Deploy
       uses: JamesIves/github-pages-deploy-action@releases/v3
