@@ -13,6 +13,7 @@ import Announcements from './Components/announcements.js';
 import './bootstrap.css';
 import './App.css';
 import user from './Components/user.svg';
+import univlogo from './Components/univlogo.svg';
 
 
 class App extends React.Component{
@@ -222,8 +223,11 @@ class App extends React.Component{
             onloadCallback={this.onLoadRecaptcha}
             verifyCallback={this.verifyCallback}
         />
-
-        <div className='Box'>
+        <div className='Divided row'>
+        <div className='Logo col-lg-6'>
+          <img src={univlogo} className='Univlogo' alt='University Logo' />
+        </div>
+        <div className='Box col-lg-6'>
           <img src={user} className='Userloginlogo' alt='User' />
           <h1 className='Heads'>Sign In</h1>
           <div className='Content'>
@@ -249,6 +253,7 @@ class App extends React.Component{
           </div>
         </div>
         </div>
+        </div>
 
       );
     }
@@ -266,8 +271,11 @@ class App extends React.Component{
             onloadCallback={this.onLoadRecaptcha}
             verifyCallback={this.verifyCallback}
         />
-
-        <div className='Box'>
+        <div className='Divided row'>
+        <div className='Logo col-lg-6'>
+          <img src={univlogo} className='Univlogo' alt='University Logo' />
+        </div>
+        <div className='Box col-lg-6'>
         <img src={user} className='Userloginlogo' alt='User' />
           <h1 className='Heads'>Register</h1>
           <div className='Content'>
@@ -327,6 +335,7 @@ class App extends React.Component{
           </div>
         </div>
         </div>
+        </div>
 
       );
     }
@@ -344,8 +353,11 @@ class App extends React.Component{
             onloadCallback={this.onLoadRecaptcha}
             verifyCallback={this.verifyCallback}
         />
-
-        <div className='Box'>
+        <div className='Divided row'>
+        <div className='Logo col-lg-6'>
+          <img src={univlogo} className='Univlogo' alt='University Logo' />
+        </div>
+        <div className='Box col-lg-6'>
         <img src={user} className='Userloginlogo' alt='User' />
           <h1 className='Heads'>Forgot Password</h1>
           <div className='Content'>
@@ -369,6 +381,7 @@ class App extends React.Component{
           </form>       
               
           </div>
+        </div>
         </div>
         </div>
 
