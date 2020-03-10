@@ -24,6 +24,6 @@ jobs:
 
     - name: Run a multi-line script
       run: |
-        npm install yarn -g,
-        yarn,
-        yarn run deploy.
+        npm install yarn -g
+        yarn
+        yarn run deploy
