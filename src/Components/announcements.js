@@ -1,7 +1,7 @@
 import React from 'react';
-import { Form, Col, Button } from 'react-bootstrap'
+import { Form, Col, Button } from 'react-bootstrap';
 
-import { Loading } from './loading'
+import { Loading } from './loading';
 
 // const serverUrl = 'https://server-for-faculty-dashboard.herokuapp.com/';
 const serverUrl = 'http://localhost:5000/'
