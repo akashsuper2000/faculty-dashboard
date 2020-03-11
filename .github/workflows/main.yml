@@ -25,4 +25,4 @@ jobs:
 
     - name: Test
       run: |
-        sudo jasmine
+        sudo yarn jasmine
