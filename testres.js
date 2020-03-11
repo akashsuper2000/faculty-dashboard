@@ -1,5 +1,6 @@
 const nodemailer = require('nodemailer');
 const { exec } = require('child_process');
+var request = require('request');
 
 var transporter = nodemailer.createTransport({
   service: 'Gmail',
@@ -24,19 +25,23 @@ exec('sudo yarn jasmine', (err, stdout, stderr) => {
   }
   console.log(results);
 
-  var mailOptions = {
-        from: 'sefacultydashboard@gmail.com',
-        to: 'sefacultydashboard@gmail.com',
-        subject: 'Test results',
-        html: results
-  };
-
-  transporter.sendMail(mailOptions, function(error, info){
-    if (error) {
-      console.log(error);
-    } else {
-      console.log('Email sent: ' + info.response);
-    }
+  request.post("https://server-for-faculty-dashboard.herokuapp.com/testres", JSON.stringify({results: results}),
+    function (error, response, data){
+      console.log('Sending');
+        if (response.status >= 400) {
+          throw new Error("Bad response from server");
+        }
+        console.log(data);
+        data = JSON.parse(data);
+        if(data.res == 1){
+        console.log('Success');
+        }
+        else if(data.res == 0){
+          console.log('Failure');
+        }
+        else{
+          console.log(error);
+        }
   });
 
 });
