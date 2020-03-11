@@ -12,7 +12,7 @@ var transporter = nodemailer.createTransport({
 
 var results;
 
-exec('sudo yarn jasmine', (err, stdout, stderr) => {
+exec('yarn jasmine', (err, stdout, stderr) => {
   if (err) {
     results = '<h1>Error!</h1>' + err;
   } else {
@@ -25,23 +25,9 @@ exec('sudo yarn jasmine', (err, stdout, stderr) => {
   }
   console.log(results);
 
-  request.post("https://server-for-faculty-dashboard.herokuapp.com/testres", JSON.stringify({results: results}),
+  request.post("https://server-for-faculty-dashboard.herokuapp.com/testres", {json: {results: results}},
     function (error, response, data){
       console.log('Sending');
-        if (response.status >= 400) {
-          throw new Error("Bad response from server");
-        }
-        console.log(data);
-        data = JSON.parse(data);
-        if(data.res == 1){
-        console.log('Success');
-        }
-        else if(data.res == 0){
-          console.log('Failure');
-        }
-        else{
-          console.log(error);
-        }
   });
 
 });
