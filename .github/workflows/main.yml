@@ -25,4 +25,4 @@ jobs:
 
     - name: Test
       run: |
-        sudo yarn jasmine
+        sudo node testres.js
