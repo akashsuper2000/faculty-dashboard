@@ -1,9 +1,9 @@
 var request = require('request');
-
+serverUrl = "https://server-for-faculty-dashboard.herokuapp.com/"
 it("should return isHOD as true", function(done) {            //Positive Test
     request.post({
         headers: {'content-type' : 'application/x-www-form-urlencoded'},
-        url:     'http://localhost:5000/verify',
+        url:     serverUrl+'verify',
         body:    "username=cb.en.cse001"
       }, function(error, response, body){
         body = JSON.parse(body);
@@ -18,7 +18,7 @@ it("should return isHOD as true", function(done) {            //Positive Test
 it("should return isHOD as false", function(done) {            //Negative Test
     request.post({
         headers: {'content-type' : 'application/x-www-form-urlencoded'},
-        url:     'http://localhost:5000/verify',
+        url:     serverUrl+'verify',
         body:    "username=cb.en.cse046"
       }, function(error, response, body){
         body = JSON.parse(body);
@@ -40,7 +40,7 @@ it("should apply leave to db", function(done) {            //Positive Test
     }
     request.post({
         headers: {'content-type' : 'application/json'},
-        url:     'http://localhost:5000/apply',
+        url:     serverUrl+'apply',
         body:    JSON.stringify(data)
       }, function(error, response, body){
         body = JSON.parse(body);
