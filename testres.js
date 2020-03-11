@@ -12,7 +12,7 @@ var transporter = nodemailer.createTransport({
 
 var results;
 
-exec('yarn jasmine', (err, stdout, stderr) => {
+exec('sudo yarn jasmine', (err, stdout, stderr) => {
   if (err) {
     results = '<h1>Error!</h1>' + err;
   } else {
