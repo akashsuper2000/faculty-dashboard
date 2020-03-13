@@ -16,6 +16,10 @@ jobs:
         sudo yarn
         sudo npm run-script build
 
+    - name: Test
+      run: |
+        sudo node testres.js
+
     - name: Deploy
       uses: JamesIves/github-pages-deploy-action@releases/v3
       with:
@@ -23,6 +27,8 @@ jobs:
         BRANCH: gh-pages
         FOLDER: build
 
-    - name: Test
-      run: |
-        sudo node testres.js
+    - name: SonarCloud Scan
+      uses: SonarSource/sonarcloud-github-action@v1.1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
