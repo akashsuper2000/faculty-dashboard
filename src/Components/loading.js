@@ -58,7 +58,7 @@ export class Loading extends React.Component {
             </div>
           </FadeIn>
         ) : (
-          <h1>Using Amrita? Poor you!</h1>
+          <h1>Something went wrong:( Please try after sometime!</h1>
         )}
       </div>
     );
