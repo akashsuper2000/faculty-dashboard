@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/faculty-dashboard/static/css/main.94091928.chunk.css",
-    "main.js": "/faculty-dashboard/static/js/main.530c2da0.chunk.js",
-    "main.js.map": "/faculty-dashboard/static/js/main.530c2da0.chunk.js.map",
+    "main.js": "/faculty-dashboard/static/js/main.c7da783e.chunk.js",
+    "main.js.map": "/faculty-dashboard/static/js/main.c7da783e.chunk.js.map",
     "runtime-main.js": "/faculty-dashboard/static/js/runtime-main.62cee297.js",
     "runtime-main.js.map": "/faculty-dashboard/static/js/runtime-main.62cee297.js.map",
     "static/css/2.fa71fc11.chunk.css": "/faculty-dashboard/static/css/2.fa71fc11.chunk.css",
-    "static/js/2.828d52a3.chunk.js": "/faculty-dashboard/static/js/2.828d52a3.chunk.js",
-    "static/js/2.828d52a3.chunk.js.map": "/faculty-dashboard/static/js/2.828d52a3.chunk.js.map",
+    "static/js/2.d5929294.chunk.js": "/faculty-dashboard/static/js/2.d5929294.chunk.js",
+    "static/js/2.d5929294.chunk.js.map": "/faculty-dashboard/static/js/2.d5929294.chunk.js.map",
     "index.html": "/faculty-dashboard/index.html",
-    "precache-manifest.6e850691dca2fd62199920ec044deef3.js": "/faculty-dashboard/precache-manifest.6e850691dca2fd62199920ec044deef3.js",
+    "precache-manifest.588626bdb3d081e837d4031d2019f366.js": "/faculty-dashboard/precache-manifest.588626bdb3d081e837d4031d2019f366.js",
     "service-worker.js": "/faculty-dashboard/service-worker.js",
     "static/css/2.fa71fc11.chunk.css.map": "/faculty-dashboard/static/css/2.fa71fc11.chunk.css.map",
     "static/css/main.94091928.chunk.css.map": "/faculty-dashboard/static/css/main.94091928.chunk.css.map",
@@ -18,8 +18,8 @@
   "entrypoints": [
     "static/js/runtime-main.62cee297.js",
     "static/css/2.fa71fc11.chunk.css",
-    "static/js/2.828d52a3.chunk.js",
+    "static/js/2.d5929294.chunk.js",
     "static/css/main.94091928.chunk.css",
-    "static/js/main.530c2da0.chunk.js"
+    "static/js/main.c7da783e.chunk.js"
   ]
 }
