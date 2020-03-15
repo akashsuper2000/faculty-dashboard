@@ -1,11 +1,13 @@
 import React from 'react';
 import { Form, Col, Button } from 'react-bootstrap'
+import { BrowserRouter as Router,Switch,Route,Redirect } from "react-router-dom";
 
 import { DatePickerFromTo } from './datepicker_fromto.js'
 import { LeaveLog } from './leavelog'
 
 const serverUrl = 'https://server-for-faculty-dashboard.herokuapp.com/'
 // const serverUrl = 'http://localhost:5000/';
+const Notfound = () => <h1>Not found</h1>
 export class Apply extends React.Component {
 	constructor(props) {
 		super(props);
@@ -95,7 +97,15 @@ export class Apply extends React.Component {
 		}
 		else if(this.state.renderLeaveLog)
 		{
-			return <LeaveLog username={this.props.username} isHOD={this.props.isHOD} />
+			return (
+				<Router>
+				<Redirect to='/leavelog' />
+				<Switch>
+						<Route exact path="/leavelog" render={() => <LeaveLog username={this.props.username} isHOD={this.props.isHOD}/>} />
+						<Route component={Notfound} />
+					</Switch>
+				</Router>
+			);
 		}
 		else
 		{
@@ -158,8 +168,6 @@ export class Apply extends React.Component {
 						</Button>
 						</Col>
 					</Form>
-					<br></br>
-					<LeaveLog username={this.props.username} isHOD={this.props.isHOD} />
 				</div>
 			);
 		}
