@@ -39,6 +39,9 @@ class App extends React.Component{
       page: 0,
       login: 0,
       user: 'User',
+      name: 'Name',
+      email: 'sefacultydashboard@gmail.com',
+      dept: 'cse',
       loading: 0,
       //https://server-for-faculty-dashboard.herokuapp.com/
       sendurl: 'https://server-for-faculty-dashboard.herokuapp.com/'
@@ -80,6 +83,9 @@ class App extends React.Component{
         if(data.res.length == 1){
         console.log('Success');
         self.setState({user: data.res[0].id});
+        self.setState({name: data.res[0].name});
+        self.setState({dept: data.res[0].dept});
+        self.setState({email: data.res[0].email});
         self.setState({login: 1});
         self.setState({loading: 0});
         document.cookie = 'user='+self.state.user;
@@ -203,7 +209,7 @@ class App extends React.Component{
       else if(value=='Leave'){
         this.setState({page: 4});
       }
-      else{
+      else if(value=='Logout'){
         this.setState({page: 0});
         this.setState({login: 0});
         document.cookie = "user=; expires=Thu, 01 Jan 1970 00:00:00 UTC;";
@@ -402,7 +408,7 @@ class App extends React.Component{
       </div>
 
       </div>
-      {this.state.page==0?(<UC facultyId={this.state.user} />):(
+      {this.state.page==0?(<UC facultyId={this.state.user} name={this.state.name} dept={this.state.dept} email={this.state.email}/>):(
           this.state.page==1?(<ViewCoursePlan facultyId={this.state.user} />):(
             this.state.page==2?(<ViewSchedule facultyId={this.state.user} />):(
               this.state.page==3?(<Announcements facultyId={this.state.user} />):(
