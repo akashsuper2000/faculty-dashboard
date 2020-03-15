@@ -4,7 +4,7 @@ insert into users.department values('ece','cb.en.cse002');
 
 INSERT INTO `users`.`users`  VALUES ('cb.en.cse001', 'Dr. Lata P.', 'cse', 'latap123@gmail.com', 'latap123');
 INSERT INTO `users`.`users`  VALUES ('cb.en.cse002', 'Dr. Soman. K. P', 'ece', 'somankp@gmail.com', 'soman123');
-INSERT INTO `users`.`users`  VALUES ('cb.en.cse044', 'Dr. Ganesh Neelakanta Iyer', 'cse', 'ganeshniyer@gmail.com', 'ganesh123');
+INSERT INTO `users`.`users`  VALUES ('cb.en.cse044', 'Dr. Ganesh Neelakanta Iyer', 'cse', 'jamji1729@gmail.com', 'ganesh123');
 INSERT INTO `users`.`users`  VALUES ('cb.en.cse046', 'Dr. Bala Tripura Sundari B.', 'ece', 'lathamani123@gmail.com', 'latha');
 INSERT INTO `users`.`users`  VALUES ('cb.en.cse120', 'Dr. Thangavelu S.', 'cse', 'thangavelu12@gmail.com', 'thangavelu123');
 INSERT INTO `users`.`users`  VALUES ('sample', 'akash', 'cse', 'sefacultydashboard@gmail.com', 'password');
