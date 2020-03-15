@@ -10,6 +10,7 @@ import LMS from './Components/lms.js';
 import ViewSchedule from './Components/ViewSchedule.jsx';
 import ViewCoursePlan from './Components/ViewCoursePlan.jsx';
 import Announcements from './Components/announcements.js';
+import Profile from './Components/Profile.jsx';
 
 import './bootstrap.css';
 import './App.css';
@@ -408,7 +409,7 @@ class App extends React.Component{
       </div>
 
       </div>
-      {this.state.page==0?(<UC facultyId={this.state.user} name={this.state.name} dept={this.state.dept} email={this.state.email}/>):(
+      {this.state.page==0?(<Profile facultyId={this.state.user} name={this.state.name} dept={this.state.dept} email={this.state.email}/>):(
           this.state.page==1?(<ViewCoursePlan facultyId={this.state.user} />):(
             this.state.page==2?(<ViewSchedule facultyId={this.state.user} />):(
               this.state.page==3?(<Announcements facultyId={this.state.user} />):(
