@@ -1,0 +1,3 @@
+[submodule "node-server"]
+	path = node-server
+	url = https://git.heroku.com/server-for-faculty-dashboard.git
