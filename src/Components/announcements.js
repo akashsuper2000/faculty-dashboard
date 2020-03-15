@@ -3,8 +3,8 @@ import { Form, Col, Button } from 'react-bootstrap';
 import './lms.css'
 import { Loading } from './loading';
 
-const serverUrl = 'https://server-for-faculty-dashboard.herokuapp.com/';
-// const serverUrl = 'http://localhost:5000/'
+// const serverUrl = 'https://server-for-faculty-dashboard.herokuapp.com/';
+const serverUrl = 'http://localhost:5000/'
 export default class Announcements extends React.Component {
 	constructor(props) {
 		super(props);
@@ -81,11 +81,12 @@ export default class Announcements extends React.Component {
 			}
 			return response.json();
 		}).then(data=>{
-			
+			console.log(data);
+			this.setState({isLoadedAnn: true});
 		}).catch(err=>{
 			console.log(err);
 		})
-		this.setState({isLoadedAnn: true});
+		this.setState({reRender: true});
 	}
 
 	handleApplyForm = (e) => {
@@ -113,7 +114,7 @@ export default class Announcements extends React.Component {
 		}).catch(err=>{
 			console.log(err);
 		})
-		alert("Announcement Sent");
+		// alert("Announcement Sent");
 
 		this.setState({reRender: true});
 	}

@@ -10,8 +10,8 @@ import { ApproveDecline } from './approvedecline'
 import { LeaveLog } from './leavelog'
 import { Loading } from './loading'
 
-const serverUrl = 'https://server-for-faculty-dashboard.herokuapp.com/';
-// const serverUrl = 'http://localhost:5000/';
+// const serverUrl = 'https://server-for-faculty-dashboard.herokuapp.com/';
+const serverUrl = 'http://localhost:5000/';
 const Notfound = () => <h1>Not found</h1>
 
 export default class LMS extends React.Component {

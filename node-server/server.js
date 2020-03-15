@@ -303,7 +303,7 @@ app.post('/apply',(req,res)=>{
 
 app.post('/deleteAnn',(req,res)=>{
   console.log(req.body);
-  var query = "delete from announcement where id = '"+id+"';";
+  var query = "delete from announcement where id = '"+req.body.id+"';";
   console.log(query);
   con.query(query, function(err, result, fields) {
       if(err) {console.log(err);}
@@ -317,7 +317,7 @@ app.post('/deleteAnn',(req,res)=>{
 
 app.post('/deleteLeave',(req,res)=>{
   console.log(req.body);
-  var query = "delete from leavelog where id = '"+id+"';";
+  var query = "delete from leavelog where leaveid = '"+req.body.id+"';";
   console.log(query);
   con.query(query, function(err, result, fields) {
       if(err) {console.log(err);}

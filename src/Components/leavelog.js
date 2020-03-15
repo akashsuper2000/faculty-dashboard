@@ -2,15 +2,16 @@ import React from 'react';
 
 import { Loading } from './loading'
 
-const serverUrl = 'https://server-for-faculty-dashboard.herokuapp.com/';
-// const serverUrl = 'http://localhost:5000/';
+// const serverUrl = 'https://server-for-faculty-dashboard.herokuapp.com/';
+const serverUrl = 'http://localhost:5000/';
 export class LeaveLog extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
 			isLoaded: false,
 			headerHtml: [],
-			entriesHtml: []
+			entriesHtml: [],
+			reRender: false
 		}
 	}
 	generateTableHeader() {
@@ -39,11 +40,12 @@ export class LeaveLog extends React.Component {
 			}
 			return response.json();
 		}).then(data=>{
-			
+			console.log(data);
+			this.setState({isLoaded: true});	
 		}).catch(err=>{
 			console.log(err);
 		})
-		this.setState({isLoaded: true});
+		this.setState({reRender: true});
 	}
 
 	generateTableEntries(entries) {
@@ -115,10 +117,18 @@ export class LeaveLog extends React.Component {
 
 	render() {
 		if(!this.state.isLoaded)
+		{
 			// return "Loading...";
 			return(
 				<Loading />
 			);
+		}
+		else if(this.state.reRender)
+		{
+			return(
+				<LeaveLog username={this.props.username} isHOD={this.props.isHOD} />
+			);
+		}
 		else
 		{
 			console.log(this.state.entriesHtml);
