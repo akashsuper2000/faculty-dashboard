@@ -98,13 +98,15 @@ export class Apply extends React.Component {
 		else if(this.state.renderLeaveLog)
 		{
 			return (
-				<Router>
-				<Redirect to='/leavelog' />
-				<Switch>
-						<Route exact path="/leavelog" render={() => <LeaveLog username={this.props.username} isHOD={this.props.isHOD}/>} />
-						<Route component={Notfound} />
-					</Switch>
-				</Router>
+
+				<Apply username={this.props.username} isHOD={this.props.isHOD}/>
+				// <Router>
+				// <Redirect to='/leavelog' />
+				// <Switch>
+				// 		<Route exact path="/leavelog" render={() => <LeaveLog username={this.props.username} isHOD={this.props.isHOD}/>} />
+				// 		<Route component={Notfound} />
+				// 	</Switch>
+				// </Router>
 			);
 		}
 		else
