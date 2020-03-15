@@ -1,5 +1,4 @@
 import React from 'react';
-import './lms.css';
 import { BrowserRouter as Router,Switch,Route,NavLink,Redirect } from "react-router-dom";
 import { Navbar, Nav } from 'react-bootstrap'
 
@@ -9,9 +8,10 @@ import { Apply } from './applyleave'
 import { ApproveDecline } from './approvedecline'
 import { LeaveLog } from './leavelog'
 import { Loading } from './loading'
+import './lms.css';
 
-// const serverUrl = 'https://server-for-faculty-dashboard.herokuapp.com/';
-const serverUrl = 'http://localhost:5000/';
+const serverUrl = 'https://server-for-faculty-dashboard.herokuapp.com/';
+// const serverUrl = 'http://localhost:5000/';
 const Notfound = () => <h1>Not found</h1>
 
 export default class LMS extends React.Component {
@@ -60,16 +60,16 @@ export default class LMS extends React.Component {
 		{
 			return (
 				<Router>
-					{/* <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark" fixed="bottom">
+					 <Navbar collapseOnSelect expand="lg" bg="light" variant="light">
 						<Navbar.Brand href="#" >
-							<NavLink className="navbarLinks" exact activeClassName="active" to="/leavelog">Leave Log</NavLink>
+							<NavLink className="navbarLinks" exact activeClassName="active" to="/leavelog">View leave Log</NavLink>
 						</Navbar.Brand>
 						<Navbar.Toggle aria-controls="responsive-navbar-nav" />
 						<Navbar.Collapse id="responsive-navbar-nav">
 							<Nav className="ml-auto">
 								{!this.state.isHOD && 
 									<Nav.Link href="#" >
-										<NavLink className="navbarLinks" activeClassName="active" to="/apply">Apply</NavLink>
+										<NavLink className="navbarLinks" activeClassName="active" to="/apply">+ Apply</NavLink>
 									</Nav.Link>
 								}				
 								{this.state.isHOD &&
@@ -79,9 +79,9 @@ export default class LMS extends React.Component {
 								}			
 							</Nav>
 						</Navbar.Collapse>
-					</Navbar> */}
+					</Navbar> 
 					{!this.state.isHOD &&
-						<Redirect to="/apply" />
+						<Redirect to="/leavelog" />
 					}
 					{this.state.isHOD &&
 						<Redirect to="/approvedecline" />

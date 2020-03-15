@@ -16,7 +16,7 @@ class ViewSchedule extends Component {
      
      sharingButtons(){
         // const url = 'https://github.com/caspg/react-sharingbuttons'
-        const url = `https://seschedule.s3.amazonaws.com/imgs/${this.state.id}.jpg`;
+        const url = `https://seschedule.s3.amazonaws.com/${this.state.id}.jpg`;
         const shareText = 'This is my class Schedule!'
         return (
           <div>
@@ -94,7 +94,7 @@ class ViewSchedule extends Component {
 
     render() { 
         // let file = require('./imgs/' + this.state.id +'.jpg');
-        const url = `https://seschedule.s3.amazonaws.com/imgs/${this.state.id}.jpg`;
+        const url = `https://seschedule.s3.amazonaws.com/${this.state.id}.jpg`;
         return ( 
             <div className = "Schedule">
                 {/*<h3>
