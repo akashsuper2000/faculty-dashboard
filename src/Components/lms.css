@@ -19,16 +19,20 @@ body {
 
 .formHeaderspl{
   color: black;
-  line-height: 40px;
+  line-height: 60px;
+  font-size: 20px;
 }
 
 .leftAllignFormHeader{
   text-align: center; 
   line-height: 80px;
+  font-size: 30px;
 }
 
 .formHeader{
   color: black;
+  font-size: 20px;
+  margin-bottom: 20px;
 }
 
 .Form{
@@ -45,6 +49,10 @@ code {
 
 .ACT{
   color: blue;
+}
+
+.DayPickerInput{
+  padding: 5px;
 }
 
 .fadeIN{

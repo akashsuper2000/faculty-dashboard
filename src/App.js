@@ -37,8 +37,8 @@ class App extends React.Component{
   constructor(props){
     super(props);
     this.state = {
-      page: 0,
-      login: 0,
+      page: 4,
+      login: 1,
       user: 'User',
       name: 'Name',
       email: 'sefacultydashboard@gmail.com',

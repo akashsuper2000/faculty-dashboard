@@ -111,21 +111,21 @@ export class Apply extends React.Component {
 								</Form.Label>
 									<Form.Check
 										type="radio"
-										label="Casual Leave"
+										label="Casual"
 										name="formHorizontalRadios"
 										id="formHorizontalRadios1"
 										value="Casual Leave"
 									/>
 									<Form.Check
 										type="radio"
-										label="Sick Leave"
+										label="Sick"
 										name="formHorizontalRadios"
 										id="formHorizontalRadios2"
 										value="Sick Leave"
 									/>
 									<Form.Check
 										type="radio"
-										label="Privilege Leave"
+										label="Privilege"
 										name="formHorizontalRadios"
 										id="formHorizontalRadios3"
 										value="Privilege Leave"
@@ -153,7 +153,7 @@ export class Apply extends React.Component {
 						<br></br>
 
 						<Col>
-							<Button variant="primary" type="submit">
+							<Button variant="dark" type="submit">
 								Apply
 						</Button>
 						</Col>
