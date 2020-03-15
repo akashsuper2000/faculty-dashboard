@@ -2,7 +2,7 @@ import React from 'react';
 import './lms.css'
 import { Loading } from './loading'
 const serverUrl = 'https://server-for-faculty-dashboard.herokuapp.com/';
-
+// const serverUrl = 'http://localhost:5000/';
 export class ApproveDecline extends React.Component {
 	constructor(props) {
 		super(props);
