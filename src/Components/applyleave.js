@@ -53,7 +53,7 @@ export class Apply extends React.Component {
 		var S = this.formData.startDate;
 		var E = this.formData.endDate;
 		console.log(T);console.log(S);console.log(E);
-		if(S.getTime()<T.getTime() || S.getTime()>E.getTime())
+		if(S.getTime()>E.getTime())
 		{
 			return alert("Improper Dates");
 		}

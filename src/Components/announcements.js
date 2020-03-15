@@ -1,6 +1,6 @@
 import React from 'react';
 import { Form, Col, Button } from 'react-bootstrap';
-
+import './lms.css'
 import { Loading } from './loading';
 
 const serverUrl = 'https://server-for-faculty-dashboard.herokuapp.com/';
@@ -26,6 +26,9 @@ export default class Announcements extends React.Component {
 	}
 	generateTableHeader() {
 		let columns = ["Date","Announcements"];
+		if(this.state.isHOD == true){
+			columns.push("Action");
+		}
 		for(var i = 0;i<columns.length;i++)
 		{
 			var colh = columns[i];
@@ -39,17 +42,33 @@ export default class Announcements extends React.Component {
 		var rows = entries.length;
 		for(var i = 0;i<rows;i++)
 		{
-			console.log(entries[i]);
-			this.state.entriesHtml.push(
-			<tr align="center" key={i} id={entries[i].status}>
-				<td key={entries[i].announcedate.toString().slice(0,10)}>{entries[i].announcedate.toString().slice(0,10)}</td>
-				<td key={entries[i].announce}>{entries[i].announce}</td>
-			</tr>
-			);
+			console.log(entries[i]);	
+			if(this.state.isHOD == true){
+				this.state.entriesHtml.push(
+					<tr align="center" key={i} id={entries[i].status}>
+						<td key={entries[i].announcedate.toString().slice(0,10)}>{entries[i].announcedate.toString().slice(0,10)}</td>
+						<td key={entries[i].announce}>{entries[i].announce}</td>
+						<td>
+						<button style={{marginRight: "16px"}} type="button" onClick={this.deleteAnn.bind(this,entries[i].id)} class="btn btn-danger" key={entries[i].id} name="delete">Delete</button>
+						</td>
+					</tr>
+				);
+			}
+			else
+			{
+				this.state.entriesHtml.push(
+					<tr align="center" key={i} id={entries[i].status}>
+						<td key={entries[i].announcedate.toString().slice(0,10)}>{entries[i].announcedate.toString().slice(0,10)}</td>
+						<td key={entries[i].announce}>{entries[i].announce}</td>
+					</tr>
+					);
+			}
 		}
 		console.log(this.state.entriesHtml);
 	}
+	deleteAnn(id){
 
+	}
 	handleApplyForm = (e) => {
 		e.preventDefault();
 		this.formData.announce = document.getElementById("announcementtext").value;
@@ -131,10 +150,7 @@ export default class Announcements extends React.Component {
 				console.log(data);
 				this.setState({isHOD: data.isHOD});
 				this.setState({isLoadedHOD: true});
-				if(data.isHOD===false)
-				{
-					this.getAnn();
-				}
+				this.getAnn();
 			}
 		}).catch(err=>{
 			console.log(err);
@@ -157,9 +173,16 @@ export default class Announcements extends React.Component {
 					<Announcements facultyId={this.state.username} />
 				);
 			}
+			else if(!this.state.isLoadedAnn)
+			{
+				return(
+                    <Loading />
+                );
+			}
 			else
 			{
 				return (
+					<div>
 					<div>
 						<h3 className = 'leftAllignFormHeader'>Make Announcement</h3>
 						<Form className = "Form" onSubmit={this.handleApplyForm}>
@@ -181,6 +204,20 @@ export default class Announcements extends React.Component {
 							</Button>
 							</Col>
 						</Form>
+					</div>
+					<br></br>
+					<div id='tableallign'>
+					<table className="table tabel-hover">
+						<thead class="thead-light" align="center">
+							<tr>
+								{this.state.headerHtml}
+							</tr>
+						</thead>
+						<tbody>
+							{this.state.entriesHtml	}
+						</tbody>
+					</table>
+					</div>
 					</div>
 				);
 			}

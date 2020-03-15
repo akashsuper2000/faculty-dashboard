@@ -79,7 +79,12 @@ export default class LMS extends React.Component {
 							</Nav>
 						</Navbar.Collapse>
 					</Navbar>
-					<Redirect to="/leavelog" />
+					{!this.state.isHOD &&
+						<Redirect to="/apply" />
+					}
+					{this.state.isHOD &&
+						<Redirect to="/approvedecline" />
+					}
 					<Switch>
 						<Route exact path="/leavelog" render={() => <LeaveLog username={this.state.username} isHOD={this.state.isHOD}/>} />
 						<Route path="/apply" render={() => <Apply username={this.state.username} isHOD={this.state.isHOD}/>} />

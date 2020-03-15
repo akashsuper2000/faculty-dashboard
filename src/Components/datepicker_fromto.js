@@ -64,7 +64,7 @@ export class DatePickerFromTo extends React.Component {
       <div className="InputFromTo">
         <DayPickerInput
         id = "FROMFROM"
-          min = {this.today}
+          // min = {this.today}
           value={from}
           placeholder="From"
           format="LL"
@@ -72,7 +72,8 @@ export class DatePickerFromTo extends React.Component {
           parseDate={parseDate}
           dayPickerProps={{
             selectedDays: [from, { from, to }],
-            disabledDays: { before : this.today, after: to },
+            // disabledDays: { before : this.today, after: to },
+            disabledDays: { after: to },
             toMonth: to,
             modifiers,
             numberOfMonths: 2,
@@ -87,7 +88,7 @@ export class DatePickerFromTo extends React.Component {
         <span className="InputFromTo-to">
           <DayPickerInput
             id = "TOTO"
-            min = {this.today}
+            // min = {this.today}
             ref={el => (this.to = el)}
             value={to}
             placeholder="To"
