@@ -2,8 +2,8 @@ import React from 'react';
 
 import { Loading } from './loading'
 
-// const serverUrl = 'https://server-for-faculty-dashboard.herokuapp.com/';
-const serverUrl = 'http://localhost:5000/';
+const serverUrl = 'https://server-for-faculty-dashboard.herokuapp.com/';
+// const serverUrl = 'http://localhost:5000/';
 export class LeaveLog extends React.Component {
 	constructor(props) {
 		super(props);

@@ -271,6 +271,29 @@ app.post('/approve',(req,res)=>{
             dummy: true
         }
         res.json(JSON.stringify(table));
+
+        emailID = "";
+        query = "select email,name from leavelog l,users u where l.leaveid='"+id+"' and l.appliedby=u.id;";
+        console.log(query);
+        con.query(query, function(err, result, fields) {
+          result = JSON.parse(JSON.stringify(result))
+          emailID = result[0].email;
+          name = result[0].name;
+          var mailOptions = {
+            from: 'sefacultydashboard@gmail.com',
+            to: emailID,
+            subject: 'Leave Approved',
+            html: "Hi "+name+"!<br></br>Your Leave with id "+id+" has been <b>approved</b> by your HOD."
+          };
+
+          transporter.sendMail(mailOptions, function(error, info){
+            if (error) {
+              console.log(error);
+            } else {
+              console.log('Email sent: ' + info.response);
+            }
+          });
+        });
     })
 })
 
@@ -283,6 +306,28 @@ app.post('/decline',(req,res)=>{
             dummy: true
         }
         res.json(JSON.stringify(table));
+        emailID = "";
+        query = "select email,name from leavelog l,users u where l.leaveid='"+id+"' and l.appliedby=u.id;";
+        console.log(query);
+        con.query(query, function(err, result, fields) {
+          result = JSON.parse(JSON.stringify(result))
+          emailID = result[0].email;
+          name = result[0].name;
+          var mailOptions = {
+            from: 'sefacultydashboard@gmail.com',
+            to: emailID,
+            subject: 'Leave Declined',
+            html: "Hi "+name+"!<br></br>Your Leave with id "+id+" has been <b>declined</b> by your HOD."
+          };
+
+          transporter.sendMail(mailOptions, function(error, info){
+            if (error) {
+              console.log(error);
+            } else {
+              console.log('Email sent: ' + info.response);
+            }
+          });
+        });
     })
 })
 
