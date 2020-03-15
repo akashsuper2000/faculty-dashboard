@@ -5,7 +5,7 @@ import { DatePickerFromTo } from './datepicker_fromto.js'
 import { LeaveLog } from './leavelog'
 
 const serverUrl = 'https://server-for-faculty-dashboard.herokuapp.com/'
-
+// const serverUrl = 'http://localhost:5000/';
 export class Apply extends React.Component {
 	constructor(props) {
 		super(props);
@@ -158,6 +158,8 @@ export class Apply extends React.Component {
 						</Button>
 						</Col>
 					</Form>
+					<br></br>
+					<LeaveLog username={this.props.username} isHOD={this.props.isHOD} />
 				</div>
 			);
 		}

@@ -14,7 +14,7 @@ export class ApproveDecline extends React.Component {
 		}
 	}
 	generateTableHeader() {
-		let columns = ["Leave ID","Leave Type","Start Date","End Date","Reason","Action"];
+		let columns = ["Leave ID","Applied by","Leave Type","Start Date","End Date","Reason","Action"];
 		for(var i = 0;i<columns.length;i++)
 		{
 			var colh = columns[i];
@@ -68,12 +68,13 @@ export class ApproveDecline extends React.Component {
 	}
 	generateTableEntries(entries) {
 		var rows = entries.length;
-		for(var i = 0;i<rows;i++)
+		for(var i = rows-1;i>=0;i--)
 		{
 			console.log(entries[i]);
 			this.state.entriesHtml.push(
 			<tr align="center" key={i}>
 				<td key={entries[i].leaveid}>{entries[i].leaveid}</td>
+				<td key={entries[i].appliedby}>{entries[i].appliedby}</td>
 				<td key={entries[i].request_type}>{entries[i].request_type}</td>
 				<td key={entries[i].startfrom.toString().slice(0,10)}>{entries[i].startfrom.toString().slice(0,10)}</td>
 				<td key={entries[i].ends_on.toString().slice(0,10)}>{entries[i].ends_on.toString().slice(0,10)}</td>

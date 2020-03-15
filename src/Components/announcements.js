@@ -5,7 +5,6 @@ import { Loading } from './loading';
 
 const serverUrl = 'https://server-for-faculty-dashboard.herokuapp.com/';
 // const serverUrl = 'http://localhost:5000/'
-
 export default class Announcements extends React.Component {
 	constructor(props) {
 		super(props);
@@ -40,7 +39,7 @@ export default class Announcements extends React.Component {
 
 	generateTableEntries(entries) {
 		var rows = entries.length;
-		for(var i = 0;i<rows;i++)
+		for(var i = rows-1;i>=0;i--)
 		{
 			console.log(entries[i]);	
 			if(this.state.isHOD == true){
@@ -61,14 +60,34 @@ export default class Announcements extends React.Component {
 						<td key={entries[i].announcedate.toString().slice(0,10)}>{entries[i].announcedate.toString().slice(0,10)}</td>
 						<td key={entries[i].announce}>{entries[i].announce}</td>
 					</tr>
-					);
+				);
 			}
 		}
 		console.log(this.state.entriesHtml);
 	}
-	deleteAnn(id){
 
+	deleteAnn(id){
+		this.setState({isLoadedAnn: false});
+		var data = {
+			id: id
+		}
+		fetch(serverUrl+'deleteAnn',{
+			method: 'POST',
+			headers: {'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*'},
+			body: JSON.stringify(data)
+		}).then( response=>{
+			if (response.status >= 400) {
+				throw new Error("Bad response from server");
+			}
+			return response.json();
+		}).then(data=>{
+			
+		}).catch(err=>{
+			console.log(err);
+		})
+		this.setState({isLoadedAnn: true});
 	}
+
 	handleApplyForm = (e) => {
 		e.preventDefault();
 		this.formData.announce = document.getElementById("announcementtext").value;
@@ -100,6 +119,8 @@ export default class Announcements extends React.Component {
 	}
 
     getAnn(){
+		this.setState({isLoadedAnn: false});
+
         var data = {
 			username: this.state.username
 		}

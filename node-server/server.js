@@ -301,6 +301,34 @@ app.post('/apply',(req,res)=>{
     })
 })
 
+app.post('/deleteAnn',(req,res)=>{
+  console.log(req.body);
+  var query = "delete from announcement where id = '"+id+"';";
+  console.log(query);
+  con.query(query, function(err, result, fields) {
+      if(err) {console.log(err);}
+      // console.log(result.affecctedRows);
+      var table = {
+          dummy: true
+      }
+      res.json(JSON.stringify(table));
+  })
+})
+
+app.post('/deleteLeave',(req,res)=>{
+  console.log(req.body);
+  var query = "delete from leavelog where id = '"+id+"';";
+  console.log(query);
+  con.query(query, function(err, result, fields) {
+      if(err) {console.log(err);}
+      // console.log(result.affecctedRows);
+      var table = {
+          dummy: true
+      }
+      res.json(JSON.stringify(table));
+  })
+})
+
 app.post('/applyAnn',(req,res)=>{
   console.log(req.body);
   
@@ -314,7 +342,7 @@ app.post('/applyAnn',(req,res)=>{
       annDept = result[0].dept;
       console.log(289,annDept);
 
-      query = "insert into announcement values('"+annDept+"','"+req.body.announcedate+"','"+req.body.announce+"');";
+      query = "insert into announcement(dept,announcedate,announce) values('"+annDept+"','"+req.body.announcedate+"','"+req.body.announce+"');";
       console.log(query);
       con.query(query, function(err, result, fields) {
           if(err) {console.log(err);}

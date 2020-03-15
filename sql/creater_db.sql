@@ -32,7 +32,9 @@ create table users.leavelog
 
 create table users.announcement
 (
+    id int NOT NULL AUTO_INCREMENT,
     dept varchar(255),
     announcedate date,
-    announce varchar(511)
+    announce varchar(511),
+    primary key(id)
 );

@@ -3,7 +3,7 @@ import React from 'react';
 import { Loading } from './loading'
 
 const serverUrl = 'https://server-for-faculty-dashboard.herokuapp.com/';
-
+// const serverUrl = 'http://localhost:5000/';
 export class LeaveLog extends React.Component {
 	constructor(props) {
 		super(props);
@@ -24,21 +24,60 @@ export class LeaveLog extends React.Component {
 		console.log(this.state.headerHtml);
 	}
 
+	deleteLeave(id){
+		this.setState({isLoaded: false});
+		var data = {
+			id: id
+		}
+		fetch(serverUrl+'deleteLeave',{
+			method: 'POST',
+			headers: {'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*'},
+			body: JSON.stringify(data)
+		}).then( response=>{
+			if (response.status >= 400) {
+				throw new Error("Bad response from server");
+			}
+			return response.json();
+		}).then(data=>{
+			
+		}).catch(err=>{
+			console.log(err);
+		})
+		this.setState({isLoaded: true});
+	}
+
 	generateTableEntries(entries) {
 		var rows = entries.length;
-		for(var i = 0;i<rows;i++)
+		for(var i = rows-1;i>=0;i--)
 		{
 			console.log(entries[i]);
-			this.state.entriesHtml.push(
-			<tr align="center" key={i} id={entries[i].status}>
-				<td key={entries[i].leaveid}>{entries[i].leaveid}</td>
-				<td key={entries[i].request_type}>{entries[i].request_type}</td>
-				<td key={entries[i].startfrom.toString().slice(0,10)}>{entries[i].startfrom.toString().slice(0,10)}</td>
-				<td key={entries[i].ends_on.toString().slice(0,10)}>{entries[i].ends_on.toString().slice(0,10)}</td>
-				<td key={entries[i].reason}>{entries[i].reason}</td>
-				<td key={entries[i].status}>{entries[i].status}</td>
-			</tr>
-			);
+			if(!this.props.isHOD && entries[i].status==="Pending"){
+				this.state.entriesHtml.push(
+					<tr align="center" key={i} id={entries[i].status}>
+						<td key={entries[i].leaveid}>{entries[i].leaveid}</td>
+						<td key={entries[i].request_type}>{entries[i].request_type}</td>
+						<td key={entries[i].startfrom.toString().slice(0,10)}>{entries[i].startfrom.toString().slice(0,10)}</td>
+						<td key={entries[i].ends_on.toString().slice(0,10)}>{entries[i].ends_on.toString().slice(0,10)}</td>
+						<td key={entries[i].reason}>{entries[i].reason}</td>
+						<td key={entries[i].status}>
+							<button style={{marginRight: "16px"}} type="button" onClick={this.deleteLeave.bind(this,entries[i].leaveid)} class="btn btn-danger" key={entries[i].id} name="delete">Delete</button>
+						</td>
+					</tr>
+				);
+			}
+			else
+			{
+				this.state.entriesHtml.push(
+					<tr align="center" key={i} id={entries[i].status}>
+						<td key={entries[i].leaveid}>{entries[i].leaveid}</td>
+						<td key={entries[i].request_type}>{entries[i].request_type}</td>
+						<td key={entries[i].startfrom.toString().slice(0,10)}>{entries[i].startfrom.toString().slice(0,10)}</td>
+						<td key={entries[i].ends_on.toString().slice(0,10)}>{entries[i].ends_on.toString().slice(0,10)}</td>
+						<td key={entries[i].reason}>{entries[i].reason}</td>
+						<td key={entries[i].status}>{entries[i].status}</td>
+					</tr>
+				);
+			}
 		}
 		console.log(this.state.entriesHtml);
 	}

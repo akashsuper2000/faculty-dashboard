@@ -38,7 +38,7 @@ export class Loading extends React.Component {
           this.setState({ loading: true });
           setTimeout(() => {
             this.setState({ done: true });
-          }, 1000);
+          }, 3000);
         });
     }, 1200);
   }
