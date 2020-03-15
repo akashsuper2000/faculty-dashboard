@@ -1,0 +1,20 @@
+{
+  "name": "server-for-faculty-dashboard",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "engines": {
+    "node": "10.16.0"
+  },
+  "dependencies": {
+    "aws": "^0.0.3-2",
+    "aws-sdk": "^2.621.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "multer": "^1.4.2",
+    "multer-s3": "^2.9.0",
+    "mysql": "^2.18.1",
+    "nodemailer": "^6.4.2",
+    "path": "^0.12.7"
+  }
+}
