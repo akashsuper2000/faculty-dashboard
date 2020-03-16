@@ -238,7 +238,7 @@ class App extends React.Component{
           />
           <div className='Box'>
             <img src={univlogo} className='Userloginlogo' alt='User' />
-            <h1 className='Heads'>Login</h1>
+            <h1 className='Heads'>LOGIN</h1>
             <div className='Content'>
             <form onSubmit={this.handleLogin}>
 
