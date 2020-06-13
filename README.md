@@ -37,42 +37,42 @@ them through some of the time-consuming tasks in their lives
 
 ### Tools Used
 
-• React framework
-• NodeJS, GitHub
-• Git
-• SQL
-• AWS
-• Heroku
-• GitHub Actions
+- React framework
+- NodeJS, GitHub
+- Git
+- SQL
+- AWS
+- Heroku
+- GitHub Actions
 
 <hr/>
 
 ### Implementation
 
-• Type/Platform: Our project, Faculty Dashboard, is a web-application.
-• Functionalities:
+- Type/Platform: Our project, Faculty Dashboard, is a web-application.
+- Functionalities:
 
 #### Stakeholder Faculty
-Manage her/his profile
-Upload/view timetable
-Upload/view course plan
-View announcements
-Apply Leave
+- Manage her/his profile
+- Upload/view timetable
+- Upload/view course plan
+- View announcements
+- Apply Leave
 
 #### Stakeholder HOD:
-Manage her/his profile
-Upload/view timetable
-Upload/view course plan
-Make announcements
-Apply/Approve Leave
+- Manage her/his profile
+- Upload/view timetable
+- Upload/view course plan
+- Make announcements
+- Apply/Approve Leave
 
 
 ##### React is used for rendering the front-end.
 
 ##### Node is used as the back-end to:
-• handle requests from react
-• make required queries to the database
-• return required response back to react
+- handle requests from react
+- make required queries to the database
+- return required response back to react
 
 ##### Amazon S3 storage is used to store data and return required data when requests are made as queries.
 
@@ -80,10 +80,10 @@ Apply/Approve Leave
 
 ### Static Code Analysis
 
-• First, Sonarqube application was downloaded and a server was started in the localhost using the command “sonarqube-6.0 ./bin/linux-x86-64/sonar.sh start”,  it also used Sonarqube scanner. Then, using our credentials we log in to the application. Supported the code complexity we obtained whether the project is passed or failed. Once the project is passed the code analysis is seen. The tool analyses the code based on the following headers:
+- First, Sonarqube application was downloaded and a server was started in the localhost using the command “sonarqube-6.0 ./bin/linux-x86-64/sonar.sh start”,  it also used Sonarqube scanner. Then, using our credentials we log in to the application. Supported the code complexity we obtained whether the project is passed or failed. Once the project is passed the code analysis is seen. The tool analyses the code based on the following headers:
 Debt, Bugs, Vulnerabilities, Code smells, Coverage and duplication. We, the developers then resolved the security issues by fixing our code to satisfy the standards set by the application.
 
-• Actions taken:
+- Actions taken:
 Alerts in the code were considered to be a security vulnerability and this
 problem was circumvented by adding the messages that were resolved by
 marking the alerts as false positive.
@@ -92,28 +92,28 @@ Other security vulnerabilities were resolved.
 <hr/>
 
 ### UI Testing
-• Tools Used: Selenium, Chromium Driver, Firefox Driver, Lambda Test
-• Setup Details: First installed selenium package for python, then downloaded the Chromium driver for the current chrome browser. Lambda Test tool is used to perform browser and OS compatibility test.
-• Test cases statistics: 20 test cases written
+- Tools Used: Selenium, Chromium Driver, Firefox Driver, Lambda Test
+- Setup Details: First installed selenium package for python, then downloaded the Chromium driver for the current chrome browser. Lambda Test tool is used to perform browser and OS compatibility test.
+- Test cases statistics: 20 test cases written
 
 <hr/>
 
 ### Continuous Integration
 
-• Tools used: GitHub Actions
-• GitHub Actions has been enabled for the GitHub repository that hosts the project.
+- Tools used: GitHub Actions
+- GitHub Actions has been enabled for the GitHub repository that hosts the project.
 It has a custom webhook that triggers the GitHub Actions software which runs the preconfigured tests and deploys to GitHub Pages.
-• We find that an automation software like GitHub Actions is extremely helpful in eliminating the routinal procedure of running tests and deployment everytime a push is initiated. This helps in saving a lot of time and effort that otherwise would be necessary for the proper functioning of the software.
+- We find that an automation software like GitHub Actions is extremely helpful in eliminating the routinal procedure of running tests and deployment everytime a push is initiated. This helps in saving a lot of time and effort that otherwise would be necessary for the proper functioning of the software.
 
 <hr/>
 
 ### Additional Software Engineering Practices
 
-• Adopted material and fluidic design principles for UI.
-• Test suites with result portal.
-• Automated security updates reported through mail.
-• Setup a cloud enviroment to edit and push changes right through the browser without any dependencies.
-• Setup a bot that reports additional external dependencies via alerts and mails.
+- Adopted material and fluidic design principles for UI.
+- Test suites with result portal.
+- Automated security updates reported through mail.
+- Setup a cloud enviroment to edit and push changes right through the browser without any dependencies.
+- Setup a bot that reports additional external dependencies via alerts and mails.
 
 <hr/>
 
