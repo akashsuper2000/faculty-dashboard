@@ -5,7 +5,7 @@
   "homepage": "https://akashsuper2000.github.io/faculty-dashboard",
   "dependencies": {
     "aws": "^0.0.3-2",
-    "aws-sdk": "^2.621.0",
+    "aws-sdk": "^2.814.0",
     "axios": "^0.19.2",
     "cors": "^2.8.5",
     "gh-pages": "^2.1.1",
